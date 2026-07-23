@@ -35,13 +35,15 @@ export function getI18n(url: URL) {
   return { lang, messages, t };
 }
 
-export function buildAlternates(): Record<string, string> {
+export function buildAlternates(path = ''): Record<string, string> {
   const base = siteConfig.baseUrl;
+  const clean = path.replace(/^\/+/, '').replace(/\/+$/, '');
+  const mk = (l: string) => `${base}/${l}${clean ? '/' + clean : ''}`;
   return {
-    km: `${base}/`,
-    en: `${base}/en/`,
-    zh: `${base}/zh/`,
-    xDefault: `${base}/`,
+    km: mk('km'),
+    en: mk('en'),
+    zh: mk('zh'),
+    xDefault: mk('km'),
   };
 }
 

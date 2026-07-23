@@ -55,66 +55,168 @@
     "title": "Khmer Language Mini-Guide",
     "intro": "A quick key to the local names you'll see around the market.",
     "terms": [
-      { "word": "Phsar (ផ្សារ)", "meaning": "Means “market” or “bazaar”." },
-      { "word": "Reatrey (រាត្រី)", "meaning": "Means “night” or “evening”." },
-      { "word": "Phsar Reatrey", "meaning": "Literally translates to “night market.”" }
+      {
+        "word": "Phsar (ផ្សារ)",
+        "meaning": "Means “market” or “bazaar”."
+      },
+      {
+        "word": "Reatrey (រាត្រី)",
+        "meaning": "Means “night” or “evening”."
+      },
+      {
+        "word": "Phsar Reatrey",
+        "meaning": "Literally translates to “night market.”"
+      }
     ]
   },
   "shopping": {
     "title": "Shopping Experience",
     "intro": "Stroll through rows of stalls offering a mix of local and regional goods — look for these quintessential Khmer symbols.",
     "items": [
-      { "icon": "🧣", "title": "Krama (ក្រមា)", "desc": "The iconic checkered cotton scarf with centuries of history — worn as a scarf, sun-shade, or all-purpose utility cloth in daily Khmer life." },
-      { "icon": "🥈", "title": "Silver & Woodcarving", "desc": "Handmade silver jewelry and miniature red-ebony carvings inspired by Angkorian sculpture." },
-      { "icon": "🧶", "title": "Silk & Textiles", "desc": "Handwoven scarves and silk products from Khmer weavers." },
-      { "icon": "🎁", "title": "Souvenirs", "desc": "Postcards, magnets, and small keepsakes to remember your trip." }
+      {
+        "icon": "🧣",
+        "title": "Krama (ក្រមា)",
+        "desc": "The iconic checkered cotton scarf with centuries of history — worn as a scarf, sun-shade, or all-purpose utility cloth in daily Khmer life."
+      },
+      {
+        "icon": "🥈",
+        "title": "Silver & Woodcarving",
+        "desc": "Handmade silver jewelry and miniature red-ebony carvings inspired by Angkorian sculpture."
+      },
+      {
+        "icon": "🧶",
+        "title": "Silk & Textiles",
+        "desc": "Handwoven scarves and silk products from Khmer weavers."
+      },
+      {
+        "icon": "🎁",
+        "title": "Souvenirs",
+        "desc": "Postcards, magnets, and small keepsakes to remember your trip."
+      }
     ]
   },
   "food": {
     "title": "Food & Drinks",
     "intro": "The food court near the riverbank serves the most authentic Khmer home flavors — here are the dishes worth seeking out by name.",
     "items": [
-      { "icon": "🍢", "title": "Sach Ko Yak (សាច់គោយ៉ាក់)", "desc": "Herbal grilled beef skewers marinated in lemongrass, turmeric, and kaffir lime leaf, charred over charcoal for a distinctly Southeast Asian aroma." },
-      { "icon": "🍝", "title": "Lort Cha (ឆាចាប់)", "desc": "Short silver-pin noodles flash-fried with bean sprouts, chives, and egg, finished with a sweet-chili sauce — a favorite late-night energy boost." },
-      { "icon": "🍲", "title": "Num Banh Chok (នំបញ្ចុក)", "desc": "Cambodia's national rice-noodle dish in a fragrant fish-curry broth, topped with fresh herbs and banana blossom." },
-      { "icon": "🍜", "title": "Kuy Teav (គុយទាវ)", "desc": "Clear pork-bone broth simmered for hours, served with thin rice noodles, herbs, and beef or seafood." },
-      { "icon": "🥤", "title": "Sugarcane & Kumquat Juice", "desc": "Fresh-pressed sugarcane juice with a squeeze of kumquat — sweet with a tangy lift, the classic way to cool off." }
+      {
+        "icon": "🍢",
+        "title": "Sach Ko Yak (សាច់គោយ៉ាក់)",
+        "desc": "Herbal grilled beef skewers marinated in lemongrass, turmeric, and kaffir lime leaf, charred over charcoal for a distinctly Southeast Asian aroma."
+      },
+      {
+        "icon": "🍝",
+        "title": "Lort Cha (ឆាចាប់)",
+        "desc": "Short silver-pin noodles flash-fried with bean sprouts, chives, and egg, finished with a sweet-chili sauce — a favorite late-night energy boost."
+      },
+      {
+        "icon": "🍲",
+        "title": "Num Banh Chok (នំបញ្ចុក)",
+        "desc": "Cambodia's national rice-noodle dish in a fragrant fish-curry broth, topped with fresh herbs and banana blossom."
+      },
+      {
+        "icon": "🍜",
+        "title": "Kuy Teav (គុយទាវ)",
+        "desc": "Clear pork-bone broth simmered for hours, served with thin rice noodles, herbs, and beef or seafood."
+      },
+      {
+        "icon": "🥤",
+        "title": "Sugarcane & Kumquat Juice",
+        "desc": "Fresh-pressed sugarcane juice with a squeeze of kumquat — sweet with a tangy lift, the classic way to cool off."
+      }
     ]
   },
   "bestTime": {
     "title": "Best Time To Visit",
     "items": [
-      { "icon": "🌅", "title": "Around 17:00", "desc": "Stalls begin to open and the temperature eases after the afternoon heat." },
-      { "icon": "🌆", "title": "19:00 – 21:00", "desc": "Best atmosphere with full lighting, more vendors, and lively crowds." },
-      { "icon": "☀️", "title": "Avoid Midday", "desc": "The market is an evening event; visiting at noon means little is open." }
+      {
+        "icon": "🌅",
+        "title": "Around 17:00",
+        "desc": "Stalls begin to open and the temperature eases after the afternoon heat."
+      },
+      {
+        "icon": "🌆",
+        "title": "19:00 – 21:00",
+        "desc": "Best atmosphere with full lighting, more vendors, and lively crowds."
+      },
+      {
+        "icon": "☀️",
+        "title": "Avoid Midday",
+        "desc": "The market is an evening event; visiting at noon means little is open."
+      }
     ]
   },
   "transport": {
     "title": "How To Get There",
     "intro": "The market sits on the central riverfront, within reach of most downtown areas.",
     "modes": [
-      { "icon": "🚶", "title": "On Foot", "desc": "Easy to reach on foot if you are staying near Sisowath Quay or the riverside." },
-      { "icon": "🚕", "title": "Tuk Tuk", "desc": "A common, flexible way to get around Phnom Penh; agree on the fare first." },
-      { "icon": "🚖", "title": "Taxi / App", "desc": "Ride-hailing apps operate in the city for a more comfortable trip." },
-      { "icon": "🚌", "title": "Public Transport", "desc": "Local buses serve central Phnom Penh, though routes are limited at night." },
-      { "icon": "✈️", "title": "From the Airport", "desc": "Phnom Penh International Airport (PNH) is about 10 km west of the city. A taxi or ride-hailing app (Grab/PassApp) takes roughly 30–45 minutes and costs around US$12–15 to Sisowath Quay; book at the official airport taxi counter or via the app. Tuk-tuks are cheaper but slower. From your drop-off, the market is a short walk along the riverside." }
+      {
+        "icon": "🚶",
+        "title": "On Foot",
+        "desc": "Easy to reach on foot if you are staying near Sisowath Quay or the riverside."
+      },
+      {
+        "icon": "🚕",
+        "title": "Tuk Tuk",
+        "desc": "A common, flexible way to get around Phnom Penh; agree on the fare first."
+      },
+      {
+        "icon": "🚖",
+        "title": "Taxi / App",
+        "desc": "Ride-hailing apps operate in the city for a more comfortable trip."
+      },
+      {
+        "icon": "🚌",
+        "title": "Public Transport",
+        "desc": "Local buses serve central Phnom Penh, though routes are limited at night."
+      },
+      {
+        "icon": "✈️",
+        "title": "From the Airport",
+        "desc": "Phnom Penh International Airport (PNH) is about 10 km west of the city. A taxi or ride-hailing app (Grab/PassApp) takes roughly 30–45 minutes and costs around US$12–15 to Sisowath Quay; book at the official airport taxi counter or via the app. Tuk-tuks are cheaper but slower. From your drop-off, the market is a short walk along the riverside."
+      }
     ]
   },
   "nearby": {
     "title": "Explore Nearby",
     "items": [
-      { "title": "Sisowath Quay Riverside", "desc": "A riverside promenade for evening walks, city views, and open-air dining along the Tonle Sap." },
-      { "title": "Royal Palace Area", "desc": "Cambodia's royal compound and nearby temples showcase classic Khmer architecture." },
-      { "title": "Central Phnom Penh", "desc": "Explore the city center, including markets and streets close to the riverfront." }
+      {
+        "title": "Sisowath Quay Riverside",
+        "desc": "A riverside promenade for evening walks, city views, and open-air dining along the Tonle Sap."
+      },
+      {
+        "title": "Royal Palace Area",
+        "desc": "Cambodia's royal compound and nearby temples showcase classic Khmer architecture."
+      },
+      {
+        "title": "Central Phnom Penh",
+        "desc": "Explore the city center, including markets and streets close to the riverfront."
+      }
     ]
   },
   "tips": {
     "title": "Travel Tips",
     "items": [
-      { "icon": "👣", "title": "Remove Your Shoes", "desc": "Before stepping onto the central reed mats to eat, take off your shoes and leave them at the mat's edge — a basic sign of respect for local custom." },
-      { "icon": "💵", "title": "Cash & Currency", "desc": "Both USD and KHR are accepted. For small purchases use riel or small bills ($1/$5); change is often given in riel." },
-      { "icon": "🛡️", "title": "Stay Safe", "desc": "Along Sisowath Quay, keep phones and bags secure while photographing — occasional snatch theft occurs near the riverside." },
-      { "icon": "💬", "title": "Bargain Politely", "desc": "Haggling is normal at markets — keep it friendly and good-natured." }
+      {
+        "icon": "👣",
+        "title": "Remove Your Shoes",
+        "desc": "Before stepping onto the central reed mats to eat, take off your shoes and leave them at the mat's edge — a basic sign of respect for local custom."
+      },
+      {
+        "icon": "💵",
+        "title": "Cash & Currency",
+        "desc": "Both USD and KHR are accepted. For small purchases use riel or small bills ($1/$5); change is often given in riel."
+      },
+      {
+        "icon": "🛡️",
+        "title": "Stay Safe",
+        "desc": "Along Sisowath Quay, keep phones and bags secure while photographing — occasional snatch theft occurs near the riverside."
+      },
+      {
+        "icon": "💬",
+        "title": "Bargain Politely",
+        "desc": "Haggling is normal at markets — keep it friendly and good-natured."
+      }
     ]
   },
   "map": {
@@ -142,10 +244,22 @@
   "faq": {
     "title": "FAQ",
     "items": [
-      { "q": "What time does Phnom Penh Night Market open?", "a": "The market generally begins to open around 17:00 each evening." },
-      { "q": "Is Phnom Penh Night Market free to enter?", "a": "Yes, entering the market area is usually free; you pay only for what you buy or eat." },
-      { "q": "What can visitors buy at the night market?", "a": "Visitors can find souvenirs, clothing, handicrafts, and a range of local goods." },
-      { "q": "Is the night market suitable for tourists?", "a": "Yes, it is a relaxed, family-friendly place to experience Phnom Penh's nightlife and market culture." }
+      {
+        "q": "What time does Phnom Penh Night Market open?",
+        "a": "The market generally begins to open around 17:00 each evening."
+      },
+      {
+        "q": "Is Phnom Penh Night Market free to enter?",
+        "a": "Yes, entering the market area is usually free; you pay only for what you buy or eat."
+      },
+      {
+        "q": "What can visitors buy at the night market?",
+        "a": "Visitors can find souvenirs, clothing, handicrafts, and a range of local goods."
+      },
+      {
+        "q": "Is the night market suitable for tourists?",
+        "a": "Yes, it is a relaxed, family-friendly place to experience Phnom Penh's nightlife and market culture."
+      }
     ]
   },
   "footer": {
@@ -155,6 +269,87 @@
     "rights": "© {year} Phnom Penh Night Market Guide. Non-profit travel information.",
     "navTitle": "Sections",
     "langTitle": "Languages",
-    "links": { "maps": "View on Google Maps" }
+    "links": {
+      "maps": "View on Google Maps"
+    },
+    "legalTitle": "Legal & privacy",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "cookies": "Cookie Settings"
+  },
+  "backToHome": "Back to home",
+  "privacy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated: July 2026",
+    "sections": [
+      {
+        "heading": "Information we collect",
+        "content": "We collect only the minimum data necessary to provide our service. This may include browsing data (IP address, browser type, pages visited), cookies and similar technologies, and any information you voluntarily provide through a contact form or email."
+      },
+      {
+        "heading": "How we use your information",
+        "content": "We use the information we collect to improve site content and user experience, analyse traffic and usage patterns, respond to requests, and comply with our legal obligations."
+      },
+      {
+        "heading": "Third-party services",
+        "content": "Our website may use third-party services such as Google Maps (for embedded maps and location data), Google Analytics (for traffic analysis) and Unsplash (for images). These services have their own privacy policies."
+      },
+      {
+        "heading": "Your rights",
+        "content": "Under the General Data Protection Regulation (GDPR) and related laws, you have the right to access your personal data, request correction or deletion, object to processing, and lodge a complaint with a supervisory authority."
+      }
+    ]
+  },
+  "terms": {
+    "title": "Terms of Service",
+    "lastUpdated": "Last updated: July 2026",
+    "sections": [
+      {
+        "heading": "Access and use",
+        "content": "By accessing and using this site, you agree to be bound by these Terms of Service."
+      },
+      {
+        "heading": "Use of content",
+        "content": "All content on this website is provided for informational purposes only. We are an independent third-party travel information website and are not affiliated with any attraction, government agency or commercial operator."
+      },
+      {
+        "heading": "Accuracy of information",
+        "content": "We strive to provide accurate and up-to-date information, but we cannot guarantee its completeness or accuracy. Schedules, conditions and services may change without notice. Always verify important information through official channels before travelling."
+      },
+      {
+        "heading": "Intellectual property",
+        "content": "The design and original content of this website are protected by copyright. Images are sourced from Unsplash and used under its licence. Use of Google Maps data complies with Google’s Terms of Service."
+      },
+      {
+        "heading": "Limitation of liability",
+        "content": "This website is provided \"as is\" without warranties of any kind. We are not liable for any loss arising from the use of the information on this website, including but not limited to travel decisions based on its content."
+      }
+    ]
+  },
+  "cookieSettings": {
+    "title": "Cookie Settings",
+    "lastUpdated": "Last updated: July 2026",
+    "description": "We use cookies to improve your browsing experience. You can manage your preferences below.",
+    "essential": {
+      "title": "Essential Cookies",
+      "description": "These cookies are essential for the website to function and cannot be disabled.",
+      "badge": "Always active"
+    },
+    "analytics": {
+      "title": "Analytics Cookies",
+      "description": "They help us understand how visitors interact with our website by collecting anonymous usage data.",
+      "state": "Active"
+    },
+    "preferences": {
+      "title": "Preference Cookies",
+      "description": "They remember your settings, such as language and theme preferences.",
+      "state": "Active"
+    },
+    "marketing": {
+      "title": "Marketing Cookies",
+      "description": "They are used to display relevant ads and measure the effectiveness of advertising campaigns.",
+      "state": "Disabled"
+    },
+    "consentNote": "Consent management: You can change your cookie settings at any time. Please note that disabling certain cookies may affect the functionality of the website."
   }
 }

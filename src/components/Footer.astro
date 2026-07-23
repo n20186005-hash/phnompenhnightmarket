@@ -73,6 +73,15 @@ const langHrefs: Record<string, string> = {
         }
       </ul>
     </div>
+
+    <div>
+      <h3 class="text-sm font-semibold uppercase tracking-wide text-teal-200">{f.legalTitle}</h3>
+      <ul class="mt-4 space-y-2 text-sm">
+        <li><a href={`${langHrefs[lang]}privacy-policy/`} class="text-teal-100/80 transition hover:text-white">{f.privacy}</a></li>
+        <li><a href={`${langHrefs[lang]}terms-of-service/`} class="text-teal-100/80 transition hover:text-white">{f.terms}</a></li>
+        <li><a href={`${langHrefs[lang]}cookie-settings/`} class="text-teal-100/80 transition hover:text-white">{f.cookies}</a></li>
+      </ul>
+    </div>
   </div>
 
   <div class="border-t border-white/10">
