@@ -1,0 +1,101 @@
+{
+  "hero_eyebrow": "Phnom Penh · Riverside",
+  "hero_ctaMap": "View Map",
+  "hero_ctaExplore": "Plan Your Visit",
+  "header_siteName": "Phnom Penh Night Market",
+  "header_nav": {
+    "overview": "Overview",
+    "history": "History & Culture",
+    "food": "Food",
+    "shopping": "Shopping",
+    "location": "Location",
+    "faq": "FAQ"
+  },
+  "infoCards_type": "Night Market",
+  "infoCards_labels": {
+    "type": "Type",
+    "hours": "Hours",
+    "location": "Location",
+    "rating": "Rating",
+    "reviews": "Reviews"
+  },
+  "footer_siteName": "Phnom Penh Night Market",
+  "footer_tagline": "An independent travel information guide — not a booking or commercial site.",
+  "footer_navTitle": "Sections",
+  "footer_langTitle": "Languages",
+  "footer_disclaimer": "Information is compiled from public sources for general reference. Verify hours and details before your visit.",
+  "meta_title": "Phnom Penh Night Market Guide | Location, Hours & Travel Tips",
+  "meta_description": "Explore Phnom Penh Night Market in Cambodia. Find opening hours, location, food, shopping, transportation and travel information.",
+  "intro_body": [
+    "The Phnom Penh Night Market (Khmer: ផ្សាររាត្រី ភ្នំពេញ) is an open-air evening market located on the riverfront along Preah Sisowath Quay, near the junction with Street 106 in central Phnom Penh, Cambodia.",
+    "Every evening as the sun sets, vendors set up stalls selling clothing, accessories, handicrafts, and souvenirs, while a large food section offers grilled dishes, noodles, and drinks beside the river.",
+    "More than a shopping spot, the market reflects everyday urban life in Cambodia's capital — a relaxed place where residents wind down and visitors get a feel for local culture after dark."
+  ],
+  "nearby_items": [
+    {
+      "title": "Sisowath Quay Riverside",
+      "desc": "A riverside promenade for evening walks, city views, and open-air dining along the Tonle Sap."
+    },
+    {
+      "title": "Royal Palace Area",
+      "desc": "Cambodia's royal compound and nearby temples showcase classic Khmer architecture."
+    },
+    {
+      "title": "Central Phnom Penh",
+      "desc": "Explore the city center, including markets and streets close to the riverfront."
+    }
+  ],
+  "gallery_alts": [
+    "Phnom Penh Night Market lit up after dark",
+    "Stalls along the riverside night market",
+    "Cambodian street food cooking at the market",
+    "Local handicrafts and souvenirs on display",
+    "Night market street scene with visitors",
+    "Tonle Sap riverside by night",
+    "Shoppers browsing market goods",
+    "Grilled food and snacks at the night market",
+    "Colorful stalls at Phnom Penh Night Market",
+    "Evening atmosphere along Sisowath Quay",
+    "Local products and clothing for sale",
+    "City life near the Phnom Penh riverfront"
+  ],
+  "bestTime_title": "Best Time To Visit",
+  "bestTime_items": [
+    {
+      "icon": "🌅",
+      "title": "Around 17:00",
+      "desc": "Stalls begin to open and the temperature eases after the afternoon heat."
+    },
+    {
+      "icon": "🌆",
+      "title": "19:00 – 21:00",
+      "desc": "Best atmosphere with full lighting, more vendors, and lively crowds."
+    },
+    {
+      "icon": "☀️",
+      "title": "Avoid Midday",
+      "desc": "The market is an evening event; visiting at noon means little is open."
+    }
+  ],
+  "map_title": "Location & Map",
+  "map_caption": "Phnom Penh Night Market · Preah Sisowath Quay, Phnom Penh, Cambodia",
+  "faq_title": "FAQ",
+  "faq_items": [
+    {
+      "q": "What time does Phnom Penh Night Market open?",
+      "a": "The market generally begins to open around 17:00 each evening."
+    },
+    {
+      "q": "Is Phnom Penh Night Market free to enter?",
+      "a": "Yes, entering the market area is usually free; you pay only for what you buy or eat."
+    },
+    {
+      "q": "What can visitors buy at the night market?",
+      "a": "Visitors can find souvenirs, clothing, handicrafts, and a range of local goods."
+    },
+    {
+      "q": "Is the night market suitable for tourists?",
+      "a": "Yes, it is a relaxed, family-friendly place to experience Phnom Penh's nightlife and market culture."
+    }
+  ]
+}

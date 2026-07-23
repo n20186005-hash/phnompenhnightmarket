@@ -1,6 +1,19 @@
+// Resolve the canonical base URL from an environment variable at build time,
+// falling back to the production domain. Keeps canonical/hreflang/OG metadata
+// consistent across the site and avoids hardcoding a (possibly wrong) domain.
+function resolveBaseUrl(): string {
+  const fromEnv =
+    (typeof process !== 'undefined' && process.env && process.env.CURRENT_SITE_DOMAIN) ||
+    (typeof import.meta !== 'undefined' && (import.meta as any).env && (import.meta as any).env.CURRENT_SITE_DOMAIN);
+  const raw = (typeof fromEnv === 'string' && fromEnv.length > 0 ? fromEnv : 'phnompenhnightmarket.com')
+    .replace(/^https?:\/\//, '')
+    .replace(/\/+$/, '');
+  return raw.length > 0 ? `https://${raw}` : 'https://phnompenhnightmarket.com';
+}
+
 export const siteConfig = {
   name: 'Phnom Penh Night Market',
-  baseUrl: 'https://phnom-penh-night-market.com',
+  baseUrl: resolveBaseUrl(),
   slug: 'phnom-penh-night-market',
   locales: ['km', 'en', 'zh'] as const,
 };

@@ -46,30 +46,39 @@
   "culture": {
     "title": "History & Culture",
     "body": [
-      "Night markets are a long-standing part of urban life across Cambodia and Southeast Asia. In Phnom Penh, evening markets grew as the city's riverfront became a focal point for public life after sunset.",
-      "The riverside night market is part of a broader revival of Sisowath Quay, where the open promenade by the Tonle Sap river draws crowds for evening walks, food, and socializing.",
-      "Today the market is woven into the weekly rhythm of the city: a casual, family-friendly space shaped by local commerce rather than formal tourism."
+      "Night markets are a long-standing part of urban life across Cambodia and Southeast Asia. Phnom Penh's riverside night market grew as the city's waterfront — near the confluence of the Tonle Sap and Mekong rivers — became a focal point for public life after sunset, where cool river breezes have drawn residents to gather at dusk for generations.",
+      "Its signature is the open-air 'mat dining' tradition: the central plaza is laid with woven reed mats, and locals buy food from the stalls, slip off their shoes, and sit cross-legged with family and friends to share a meal — a living echo of rural Khmer communal feasting unique among Southeast Asian night markets.",
+      "Far from a tourist-only spectacle, Phsar Reatrey (ផ្សាររាត្រី ភ្នំពេញ) is where everyday Khmer life, handicraft heritage, and the modern city rhythm meet beside the water."
+    ]
+  },
+  "glossary": {
+    "title": "Khmer Language Mini-Guide",
+    "intro": "A quick key to the local names you'll see around the market.",
+    "terms": [
+      { "word": "Phsar (ផ្សារ)", "meaning": "Means “market” or “bazaar”." },
+      { "word": "Reatrey (រាត្រី)", "meaning": "Means “night” or “evening”." },
+      { "word": "Phsar Reatrey", "meaning": "Literally translates to “night market.”" }
     ]
   },
   "shopping": {
     "title": "Shopping Experience",
-    "intro": "Stroll through rows of stalls offering a mix of local and regional goods.",
+    "intro": "Stroll through rows of stalls offering a mix of local and regional goods — look for these quintessential Khmer symbols.",
     "items": [
-      { "icon": "🧶", "title": "Traditional Crafts", "desc": "Handmade textiles, silk scarves, and Cambodian handicrafts from local makers." },
-      { "icon": "🎁", "title": "Souvenirs", "desc": "Postcards, magnets, and small keepsakes to remember your trip." },
-      { "icon": "👕", "title": "Clothing & Accessories", "desc": "T-shirts, beachwear, bags, and affordable everyday fashion." },
-      { "icon": "🛍️", "title": "Local Products", "desc": "Snacks, spices, and everyday items favored by local shoppers." }
+      { "icon": "🧣", "title": "Krama (ក្រមា)", "desc": "The iconic checkered cotton scarf with centuries of history — worn as a scarf, sun-shade, or all-purpose utility cloth in daily Khmer life." },
+      { "icon": "🥈", "title": "Silver & Woodcarving", "desc": "Handmade silver jewelry and miniature red-ebony carvings inspired by Angkorian sculpture." },
+      { "icon": "🧶", "title": "Silk & Textiles", "desc": "Handwoven scarves and silk products from Khmer weavers." },
+      { "icon": "🎁", "title": "Souvenirs", "desc": "Postcards, magnets, and small keepsakes to remember your trip." }
     ]
   },
   "food": {
     "title": "Food & Drinks",
-    "intro": "A dedicated food area lets you sample Cambodian street food by the river.",
+    "intro": "The food court near the riverbank serves the most authentic Khmer home flavors — here are the dishes worth seeking out by name.",
     "items": [
-      { "icon": "🍢", "title": "Cambodian BBQ", "desc": "Grilled meats and skewers cooked over charcoal at busy stalls." },
-      { "icon": "🍜", "title": "Noodles & Soups", "desc": "Warm bowls of kuy teav (rice noodle soup) and other Cambodian staples." },
-      { "icon": "🥟", "title": "Spring Rolls", "desc": "Fresh and fried rolls served with dipping sauce." },
-      { "icon": "🍚", "title": "Fried Rice", "desc": "Simple, filling plates of fried rice with vegetables and egg." },
-      { "icon": "🥤", "title": "Fruit & Drinks", "desc": "Fresh tropical fruit, juices, and iced shakes to cool off." }
+      { "icon": "🍢", "title": "Sach Ko Yak (សាច់គោយ៉ាក់)", "desc": "Herbal grilled beef skewers marinated in lemongrass, turmeric, and kaffir lime leaf, charred over charcoal for a distinctly Southeast Asian aroma." },
+      { "icon": "🍝", "title": "Lort Cha (ឆាចាប់)", "desc": "Short silver-pin noodles flash-fried with bean sprouts, chives, and egg, finished with a sweet-chili sauce — a favorite late-night energy boost." },
+      { "icon": "🍲", "title": "Num Banh Chok (នំបញ្ចុក)", "desc": "Cambodia's national rice-noodle dish in a fragrant fish-curry broth, topped with fresh herbs and banana blossom." },
+      { "icon": "🍜", "title": "Kuy Teav (គុយទាវ)", "desc": "Clear pork-bone broth simmered for hours, served with thin rice noodles, herbs, and beef or seafood." },
+      { "icon": "🥤", "title": "Sugarcane & Kumquat Juice", "desc": "Fresh-pressed sugarcane juice with a squeeze of kumquat — sweet with a tangy lift, the classic way to cool off." }
     ]
   },
   "bestTime": {
@@ -87,7 +96,8 @@
       { "icon": "🚶", "title": "On Foot", "desc": "Easy to reach on foot if you are staying near Sisowath Quay or the riverside." },
       { "icon": "🚕", "title": "Tuk Tuk", "desc": "A common, flexible way to get around Phnom Penh; agree on the fare first." },
       { "icon": "🚖", "title": "Taxi / App", "desc": "Ride-hailing apps operate in the city for a more comfortable trip." },
-      { "icon": "🚌", "title": "Public Transport", "desc": "Local buses serve central Phnom Penh, though routes are limited at night." }
+      { "icon": "🚌", "title": "Public Transport", "desc": "Local buses serve central Phnom Penh, though routes are limited at night." },
+      { "icon": "✈️", "title": "From the Airport", "desc": "Phnom Penh International Airport (PNH) is about 10 km west of the city. A taxi or ride-hailing app (Grab/PassApp) takes roughly 30–45 minutes and costs around US$12–15 to Sisowath Quay; book at the official airport taxi counter or via the app. Tuk-tuks are cheaper but slower. From your drop-off, the market is a short walk along the riverside." }
     ]
   },
   "nearby": {
@@ -101,10 +111,10 @@
   "tips": {
     "title": "Travel Tips",
     "items": [
-      { "icon": "💡", "title": "Bring Small Cash", "desc": "Stalls mostly take cash; keep small notes handy for easier payment." },
-      { "icon": "💬", "title": "Bargain Politely", "desc": "Haggling is normal at markets — keep it friendly and good-natured." },
-      { "icon": "👜", "title": "Watch Your Belongings", "desc": "Crowded markets call for basic care with bags and phones." },
-      { "icon": "📷", "title": "Ask Before Photos", "desc": "A quick smile and gesture goes a long way when photographing people." }
+      { "icon": "👣", "title": "Remove Your Shoes", "desc": "Before stepping onto the central reed mats to eat, take off your shoes and leave them at the mat's edge — a basic sign of respect for local custom." },
+      { "icon": "💵", "title": "Cash & Currency", "desc": "Both USD and KHR are accepted. For small purchases use riel or small bills ($1/$5); change is often given in riel." },
+      { "icon": "🛡️", "title": "Stay Safe", "desc": "Along Sisowath Quay, keep phones and bags secure while photographing — occasional snatch theft occurs near the riverside." },
+      { "icon": "💬", "title": "Bargain Politely", "desc": "Haggling is normal at markets — keep it friendly and good-natured." }
     ]
   },
   "map": {

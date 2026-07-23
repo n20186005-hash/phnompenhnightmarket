@@ -24,7 +24,8 @@ const year = new Date().getFullYear();
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'TouristAttraction',
-  name: attractionName,
+  name: 'Phnom Penh Night Market',
+  alternateName: [attractionName, 'Phsar Reatrey', '金边夜市', 'ផ្សាររាត្រី ភ្នំពេញ'],
   description: pageDesc,
   url: canonical,
   image: `${siteConfig.baseUrl}/gallery/phnom-penh-night-market-1.jpg`,
@@ -48,10 +49,14 @@ const jsonLd = {
     },
   ],
   isAccessibleForFree: true,
+  publicAccess: true,
+  touristType: ['Domestic', 'International'],
   aggregateRating: {
     '@type': 'AggregateRating',
     ratingValue: attraction.rating,
     reviewCount: attraction.reviewCount,
+    bestRating: 5,
+    worstRating: 1,
   },
   sameAs: [attraction.mapsUrl],
 };
