@@ -1,0 +1,27 @@
+---
+import { getI18n } from '../i18n/ui';
+const { messages } = getI18n(Astro.url);
+const intro = messages.intro;
+---
+
+<section id="intro" class="mx-auto max-w-6xl px-4 py-14">
+  <div class="grid items-center gap-10 lg:grid-cols-2">
+    <div>
+      <h2 class="text-3xl font-bold text-gray-900">{intro.title}</h2>
+      <div class="mt-5 space-y-4 text-gray-600">
+        {intro.body.map((p: string) => <p>{p}</p>)}
+      </div>
+    </div>
+
+    <div class="relative grid grid-cols-2 gap-3">
+      <div class="flex aspect-[3/4] flex-col justify-end rounded-2xl bg-gradient-to-br from-teal-700 to-teal-900 p-5 text-white shadow-lg">
+        <span class="text-3xl">🌃</span>
+        <p class="mt-3 text-sm font-medium">📍 Preah Sisowath Quay</p>
+      </div>
+      <div class="mt-8 flex aspect-[3/4] flex-col justify-end rounded-2xl bg-gradient-to-br from-amber-400 to-amber-600 p-5 text-teal-950 shadow-lg">
+        <span class="text-3xl">🛶</span>
+        <p class="mt-3 text-sm font-semibold">🌊 Tonle Sap Riverside</p>
+      </div>
+    </div>
+  </div>
+</section>

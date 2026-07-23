@@ -1,0 +1,23 @@
+---
+import { getI18n } from '../i18n/ui';
+const { messages } = getI18n(Astro.url);
+const b = messages.bestTime;
+---
+
+<section id="best-time" class="mx-auto max-w-6xl px-4 py-14">
+  <h2 class="text-3xl font-bold text-gray-900">{b.title}</h2>
+  <div class="mt-8 grid gap-4 md:grid-cols-3">
+    {
+      b.items.map((item: any, i: number) => (
+        <div class:list={[
+          'rounded-2xl bg-white p-6 text-center shadow-sm',
+          i === 1 ? 'border-2 border-amber-400 ring-4 ring-amber-100' : 'border border-black/5',
+        ]}>
+          <div class="mx-auto grid h-14 w-14 place-items-center rounded-full bg-teal-700 text-2xl text-white">{item.icon}</div>
+          <h3 class="mt-4 font-semibold text-gray-900">{item.title}</h3>
+          <p class="mt-2 text-sm text-gray-600">{item.desc}</p>
+        </div>
+      ))
+    }
+  </div>
+</section>

@@ -1,0 +1,27 @@
+---
+import { getI18n } from '../i18n/ui';
+const { messages } = getI18n(Astro.url);
+const c = messages.infoCards;
+
+const cards = [
+  { icon: '🌙', value: c.type, label: c.labels.type },
+  { icon: '🕒', value: c.hours, label: c.labels.hours },
+  { icon: '📍', value: c.location, label: c.labels.location },
+  { icon: '⭐', value: c.rating, label: c.labels.rating },
+  { icon: '👥', value: c.reviews, label: c.labels.reviews },
+];
+---
+
+<section id="info" class="mx-auto -mt-10 max-w-6xl px-4">
+  <div class="grid grid-cols-2 gap-3 rounded-2xl bg-white p-3 shadow-xl shadow-teal-900/5 ring-1 ring-black/5 sm:grid-cols-3 lg:grid-cols-5">
+    {
+      cards.map((card) => (
+        <div class="flex flex-col items-center gap-1 rounded-xl bg-orange-50 px-3 py-4 text-center">
+          <span class="text-2xl">{card.icon}</span>
+          <span class="text-sm font-bold text-gray-900">{card.value}</span>
+          <span class="text-xs text-gray-500">{card.label}</span>
+        </div>
+      ))
+    }
+  </div>
+</section>
