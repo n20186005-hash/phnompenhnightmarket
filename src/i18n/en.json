@@ -11,7 +11,8 @@
       "food": "Food",
       "shopping": "Shopping",
       "location": "Location",
-      "faq": "FAQ"
+      "faq": "FAQ",
+      "facilities": "Facilities"
     }
   },
   "hero": {
@@ -221,7 +222,8 @@
   },
   "map": {
     "title": "Location & Map",
-    "caption": "Phnom Penh Night Market · Preah Sisowath Quay, Phnom Penh, Cambodia"
+    "caption": "Phnom Penh Night Market · Preah Sisowath Quay, Phnom Penh, Cambodia",
+    "guidance": "Location tip: Phnom Penh Night Market sits at the corner of Preah Sisowath Quay and Street 106, right beside the Tonle Sap river passenger pier."
   },
   "gallery": {
     "title": "Gallery",
@@ -275,7 +277,8 @@
     "legalTitle": "Legal & privacy",
     "privacy": "Privacy Policy",
     "terms": "Terms of Service",
-    "cookies": "Cookie Settings"
+    "cookies": "Cookie Settings",
+    "nonProfit": "This site is an independent, non-profit travel guide with no commercial partnership or vested interest in any specific vendor, hotel, or service provider inside the night market. All information is provided for objective traveller reference."
   },
   "backToHome": "Back to home",
   "privacy": {
@@ -338,18 +341,115 @@
     "analytics": {
       "title": "Analytics Cookies",
       "description": "They help us understand how visitors interact with our website by collecting anonymous usage data.",
-      "state": "Active"
+      "state": "Active",
+      "provider": "Google Analytics",
+      "desc2": "It collects anonymous information about how visitors use our website."
     },
     "preferences": {
       "title": "Preference Cookies",
       "description": "They remember your settings, such as language and theme preferences.",
-      "state": "Active"
+      "state": "Active",
+      "provider": "User Preferences",
+      "desc2": "Saves your language preference and site settings."
     },
     "marketing": {
       "title": "Marketing Cookies",
       "description": "They are used to display relevant ads and measure the effectiveness of advertising campaigns.",
-      "state": "Disabled"
+      "state": "Disabled",
+      "provider": "Personalized Ads",
+      "desc2": "It may show you relevant ads based on your interests."
     },
-    "consentNote": "Consent management: You can change your cookie settings at any time. Please note that disabling certain cookies may affect the functionality of the website."
+    "consentNote": "Consent management: You can change your cookie settings at any time. Please note that disabling certain cookies may affect the functionality of the website.",
+    "save": "Save Preferences",
+    "rejectAll": "Reject All"
+  },
+  "facilities": {
+    "title": "Visitor Facilities & Services",
+    "subtitle": "To help you plan your trip, here is a practical overview of infrastructure and services around the night market and its surrounding area.",
+    "disclaimer": "Note: As a non-profit guide, we list only categories of nearby facilities and do not recommend specific businesses.",
+    "groups": [
+      {
+        "title": "On-site Facilities",
+        "items": [
+          {
+            "icon": "🚽",
+            "title": "Restrooms (WC)",
+            "points": [
+              "Inside the market: paid public toilets are available within the market area, usually for a small maintenance fee (about 1,000 KHR / US$0.25). Carry some small change and tissue.",
+              "Nearby: the public promenade along the riverfront and adjacent commercial buildings also offer restroom facilities."
+            ]
+          },
+          {
+            "icon": "🅿️",
+            "title": "Parking & Transit",
+            "points": [
+              "Motorbikes / e-bikes: designated temporary parking zones near the 106th & 108th Street entrances, managed by on-site staff for a small fee.",
+              "Cars: street parking along Preah Sisowath Quay is scarce at night due to crowds. Ride-hailing or tuk-tuk is recommended; if driving, use paid lots at nearby commercial buildings or hotels.",
+              "Tuk-tuk / ride-hailing: a drop-off and pick-up zone sits at the market main gate where it meets the riverside road, for quick stop-and-go."
+            ]
+          },
+          {
+            "icon": "🏧",
+            "title": "ATMs & Currency Exchange",
+            "points": [
+              "ATMs: several banks operate 24-hour ATMs around the market and along Sisowath Quay, supporting international cards (USD / KHR).",
+              "Currency exchange: licensed exchange points along the riverside let you convert foreign currency into small US dollars or Cambodian riel (KHR)."
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Nearby Amenities",
+        "items": [
+          {
+            "icon": "🍽️",
+            "title": "Dining Options",
+            "points": [
+              "Market food court: central and riverside stalls offer charcoal grill, Khmer fried noodles, fresh spring rolls and fruit drinks, with the signature reed-mat picnic experience.",
+              "Riverside restaurants: indoor and open-air restaurants along Preah Sisowath Quay serve Khmer cuisine, French bistros, Asian fusion and Italian.",
+              "Rooftop bars: several high-rise buildings nearby have viewing bars overlooking the Tonle Sap river and Phnom Penh skyline."
+            ]
+          },
+          {
+            "icon": "🏨",
+            "title": "Accommodation Categories",
+            "points": [
+              "River-view boutique hotels: along Sisowath Quay, within walking distance of the market, ideal for the river sunset and night view.",
+              "Budget & backpacker hostels: behind the market (around 108th, 110th and 118th Streets), affordable for independent and young travellers.",
+              "Star-rated & business hotels: 10–15 minutes’ walk (near the Royal Palace or city main roads), full facilities for families and business trips."
+            ]
+          },
+          {
+            "icon": "🏪",
+            "title": "Supermarkets & Retail",
+            "points": [
+              "24-hour convenience stores: several around the market and the riverside main road for water, mosquito repellent, snacks and daily needs.",
+              "Compact supermarkets: a few within walking distance offer imported food, household goods and personal care products."
+            ]
+          },
+          {
+            "icon": "⛽",
+            "title": "Gas & EV Charging",
+            "points": [
+              "Gas stations: the riverside market area is a scenic, pedestrian-dense zone; car fuel stations are mainly 5–10 minutes’ drive on city main roads (e.g. Preah Norodom Blvd or Preah Monivong Blvd).",
+              "EV charging: public charging in Phnom Penh is concentrated in large commercial complexes, upscale offices and some international-brand hotel parking lots. EV drivers should check open stations in advance via a maps app."
+            ]
+          }
+        ]
+      }
+    ],
+    "tipsTitle": "General Travel Tips",
+    "tips": [
+      {
+        "icon": "🔌",
+        "title": "Sockets & Voltage",
+        "desc": "Cambodia uses 220V. Common plugs are two-flat-pin (Type A) or two-round-pin (Type C)."
+      },
+      {
+        "icon": "💳",
+        "title": "Payment",
+        "desc": "Market stalls mostly take cash (USD or KHR); larger supermarkets and restaurants nearby accept cards or QR payment."
+      }
+    ]
   }
 }

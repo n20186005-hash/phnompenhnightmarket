@@ -29,7 +29,9 @@ const d = messages.cookieSettings;
           <h2 class="font-semibold text-slate-900">{d.analytics.title}</h2>
           <span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-medium text-amber-700">{d.analytics.state}</span>
         </div>
-        <p class="mt-2 text-sm text-slate-600">{d.analytics.description}</p>
+        <p class="mt-1 text-xs font-medium text-teal-700">{d.analytics.provider}</p>
+        <p class="mt-1 text-sm text-slate-600">{d.analytics.description}</p>
+        <p class="mt-1 text-sm text-slate-500">{d.analytics.desc2}</p>
       </div>
 
       <div class="rounded-xl border border-slate-200 p-5">
@@ -37,7 +39,9 @@ const d = messages.cookieSettings;
           <h2 class="font-semibold text-slate-900">{d.preferences.title}</h2>
           <span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-medium text-amber-700">{d.preferences.state}</span>
         </div>
-        <p class="mt-2 text-sm text-slate-600">{d.preferences.description}</p>
+        <p class="mt-1 text-xs font-medium text-teal-700">{d.preferences.provider}</p>
+        <p class="mt-1 text-sm text-slate-600">{d.preferences.description}</p>
+        <p class="mt-1 text-sm text-slate-500">{d.preferences.desc2}</p>
       </div>
 
       <div class="rounded-xl border border-slate-200 p-5">
@@ -45,8 +49,15 @@ const d = messages.cookieSettings;
           <h2 class="font-semibold text-slate-900">{d.marketing.title}</h2>
           <span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-600">{d.marketing.state}</span>
         </div>
-        <p class="mt-2 text-sm text-slate-600">{d.marketing.description}</p>
+        <p class="mt-1 text-xs font-medium text-teal-700">{d.marketing.provider}</p>
+        <p class="mt-1 text-sm text-slate-600">{d.marketing.description}</p>
+        <p class="mt-1 text-sm text-slate-500">{d.marketing.desc2}</p>
       </div>
+    </div>
+
+    <div class="mt-8 flex flex-wrap gap-3">
+      <button type="button" class="rounded-full bg-teal-700 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-teal-600">{d.save}</button>
+      <button type="button" class="rounded-full border border-slate-300 px-5 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50">{d.rejectAll}</button>
     </div>
 
     <p class="mt-8 text-xs leading-relaxed text-slate-500">{d.consentNote}</p>
