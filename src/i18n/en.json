@@ -11,6 +11,7 @@
       "food": "Food",
       "shopping": "Shopping",
       "location": "Location",
+      "transport": "Transport",
       "weather": "Weather",
       "faq": "FAQ",
       "facilities": "Facilities"
@@ -274,35 +275,127 @@
     ]
   },
   "transport": {
-    "title": "How to Get to Riverside Night Market",
-    "intro": "The market sits on the central riverfront along Preah Sisowath Quay, within reach of most downtown areas.",
+    "title": "How to Get to the Night Market",
+    "intro": "The market runs along Preah Sisowath Quay on the riverside. Below is how to reach it by each mode of transport, with rough times and costs.",
+    "costNote": "Times and fares are rough ranges only — they swing with traffic, time of night and negotiation.",
+    "labels": {
+      "from": "From",
+      "time": "Time",
+      "cost": "Cost"
+    },
     "modes": [
       {
         "icon": "🚶",
         "title": "On Foot",
-        "desc": "Easy to reach on foot if you are staying near Sisowath Quay or the riverside."
+        "tag": "Easiest on the riverfront",
+        "from": "Sisowath Quay, Royal Palace, riverside hotels",
+        "time": "5–20 min",
+        "cost": "Free",
+        "points": [
+          "Follow the riverside promenade — the pavement is even and lit, and it stays busy in the evening.",
+          "Roughly 15–20 minutes from the Royal Palace area, with river views the whole way."
+        ]
       },
       {
-        "icon": "🚕",
-        "title": "Tuk Tuk",
-        "desc": "A common, flexible way to get around Phnom Penh; agree on the fare first."
+        "icon": "🛺",
+        "title": "Tuk-tuk",
+        "tag": "Most common",
+        "from": "Anywhere in the city",
+        "time": "10–20 min",
+        "cost": "About US$2–4",
+        "points": [
+          "Priced per vehicle, not per person — one tuk-tuk takes 2–4 people plus luggage.",
+          "Flag one down and agree the fare first; you can usually talk the first quote down to 70–80%.",
+          "Confirm you are heading to the night market on Preah Sisowath Quay, so you are not dropped at a different market."
+        ]
       },
       {
-        "icon": "🚖",
-        "title": "Taxi / App",
-        "desc": "Ride-hailing apps operate in the city for a more comfortable trip."
+        "icon": "📱",
+        "title": "Ride-hailing / Taxi",
+        "tag": "Fixed price",
+        "from": "Anywhere in the city",
+        "time": "10–20 min",
+        "cost": "About US$2–6",
+        "points": [
+          "Grab and PassApp show a fixed price before you book, so there is no haggling; pay by cash or card.",
+          "Type the market name or drop a pin, which avoids any language barrier.",
+          "Demand spikes in the rain and on weekend evenings, so expect a longer wait."
+        ]
+      },
+      {
+        "icon": "🛵",
+        "title": "Motorbike Taxi (Moto-dop)",
+        "tag": "Fastest",
+        "from": "Anywhere in the city",
+        "time": "5–15 min",
+        "cost": "About US$1–3",
+        "points": [
+          "Quickest option for one person with no luggage, especially in heavy traffic.",
+          "Always agree the fare before you get on.",
+          "Protection is minimal — it comes down to your own comfort level."
+        ]
       },
       {
         "icon": "🚌",
-        "title": "Public Transport",
-        "desc": "Local buses serve central Phnom Penh, though routes are limited at night."
+        "title": "City Bus",
+        "tag": "Cheapest",
+        "from": "Along the main city arteries",
+        "time": "Depends on the route",
+        "cost": "From about US$0.40",
+        "points": [
+          "Very cheap; pay cash to the conductor on board.",
+          "Most routes stop running in the evening, so there is usually nothing left by the time the market closes at 11 PM.",
+          "Plan on a tuk-tuk or a ride-hailing app for the trip back."
+        ]
+      },
+      {
+        "icon": "🚗",
+        "title": "Driving / Private Car",
+        "tag": "Good for families",
+        "from": "City centre or further out",
+        "time": "Depends on traffic",
+        "cost": "Plus parking",
+        "points": [
+          "Riverside parking is tight at night — use a paid car park at a nearby building or hotel.",
+          "There is a temporary motorbike parking area near the Street 106 and Street 108 entrances.",
+          "A drop-off and pick-up zone sits where the main entrance meets the riverside road."
+        ]
       },
       {
         "icon": "✈️",
-        "title": "From the Airport",
-        "desc": "Phnom Penh International Airport (PNH) is about 10 km west of the city. A taxi or ride-hailing app (Grab/PassApp) takes roughly 30–45 minutes and costs around US$12–15 to Sisowath Quay; book at the official airport taxi counter or via the app. Tuk-tuks are cheaper but slower. From your drop-off, the market is a short walk along the riverside."
+        "title": "From the Airport (KTI)",
+        "tag": "Changed",
+        "from": "Techo International Airport (KTI), about 20 km south of the city",
+        "time": "45–60 min",
+        "cost": "Bus about US$0.40 · app US$10–20 · taxi US$30–40",
+        "points": [
+          "Important: the old Phnom Penh International Airport (PNH, Pochentong) stopped taking scheduled traffic in September 2025. All commercial flights now use Techo International Airport (KTI) — check the airport code on your ticket.",
+          "The airport express bus is by far the cheapest at around US$0.40, but it stops often and takes much longer.",
+          "Ride-hailing is the best balance of price and comfort; for taxis, use the fixed-price counter in the arrivals hall rather than drivers who approach you.",
+          "A tuk-tuk from the new airport takes over an hour — not ideal with luggage."
+        ]
+      },
+      {
+        "icon": "🚤",
+        "title": "By River Boat",
+        "tag": "Pairs with a cruise",
+        "from": "Piers along Sisowath Quay",
+        "time": "—",
+        "cost": "Varies by cruise",
+        "points": [
+          "Several sunset and dinner cruises leave from piers along the riverfront, on the same stretch of bank as the market.",
+          "Booking a sunset cruise and the night market for the same evening works well — you step off the boat and walk straight in."
+        ]
       }
-    ]
+    ],
+    "dropoff": {
+      "title": "Drop-off and meeting point",
+      "desc": "The market stretches along Sisowath Quay and has no single front gate. Ask your driver to drop you where Street 106 or Street 108 meets the riverside road; step onto the promenade and the stalls are in front of you. Ordering your ride back from the same spot is easiest."
+    },
+    "returnNote": {
+      "title": "Getting back at night",
+      "desc": "The market winds down around 11 PM. Tuk-tuks usually wait near the exits, and ride-hailing apps still work. Keep phones and cameras out of sight while riding and hold bags on the side away from the road — bag-snatching from passing motorbikes does happen in Phnom Penh, and almost always while the vehicle is moving."
+    }
   },
   "nearby": {
     "title": "Explore Nearby",
