@@ -24,4 +24,19 @@ const s = messages.shopping;
       ))
     }
   </div>
+
+  {
+    s.notes && (
+      <div class="mt-8 grid gap-4 md:grid-cols-2">
+        <div class="rounded-2xl border border-black/5 bg-white p-6 shadow-sm">
+          <h3 class="font-semibold text-teal-800">{s.notes.stallsTitle}</h3>
+          <p class="mt-2 text-sm text-gray-600">{s.notes.stalls}</p>
+        </div>
+        <div class="rounded-2xl border border-black/5 bg-white p-6 shadow-sm">
+          <h3 class="font-semibold text-teal-800">{s.notes.bargainTitle}</h3>
+          <p class="mt-2 text-sm text-gray-600">{s.notes.bargain}</p>
+        </div>
+      </div>
+    )
+  }
 </section>

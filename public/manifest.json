@@ -1,0 +1,10 @@
+{
+  "name": "Phnom Penh Night Market Guide",
+  "short_name": "PP Night Market",
+  "description": "Independent visitor guide to Phnom Penh Night Market (Phsar Reatrey): opening hours, street food, shopping, evening weather and location.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#042f2e"
+}

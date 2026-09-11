@@ -16,23 +16,29 @@ const htmlLang = htmlLangAttr(lang);
 const alts = buildAlternates(Astro.url.pathname);
 const canonical = alts[lang] ?? alts.km;
 const { messages } = getI18n(Astro.url);
-const pageTitle = title ?? messages.meta.title;
-const pageDesc = description ?? messages.meta.description;
-const attractionName = messages.header.siteName;
 const year = new Date().getFullYear();
+// Support a dynamic {year} token in meta titles/descriptions so the copy stays
+// fresh (and clickable) without manual yearly updates.
+const fillYear = (value: string) => (value ?? '').replace(/\{year\}/g, String(year));
+const pageTitle = fillYear(title ?? messages.meta.title);
+const pageDesc = fillYear(description ?? messages.meta.description);
+const attractionName = messages.header.siteName;
 
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'TouristAttraction',
+const attractionLd = {
+  '@type': ['TouristAttraction', 'LocalBusiness'],
+  // A stable @id lets Google resolve the site and the Maps place to one entity.
+  '@id': `${siteConfig.baseUrl}/#attraction`,
   name: 'Phnom Penh Night Market',
-  alternateName: [attractionName, 'Phsar Reatrey', '金边夜市', 'ផ្សាររាត្រី ភ្នំពេញ'],
+  alternateName: [attractionName, 'Phsar Reatrey', 'Riverside Night Market', '金边夜市', 'ផ្សាររាត្រី ភ្នំពេញ'],
   description: pageDesc,
-  url: canonical,
-  image: `${siteConfig.baseUrl}/gallery/phnom-penh-night-market-1.jpg`,
+  url: alts[lang] ?? siteConfig.baseUrl,
+  image: [`${siteConfig.baseUrl}/gallery/phnom-penh-night-market-1.jpg`],
   address: {
     '@type': 'PostalAddress',
     streetAddress: 'Preah Sisowath Quay',
     addressLocality: 'Phnom Penh',
+    addressRegion: attraction.addressRegion,
+    postalCode: attraction.postalCode,
     addressCountry: attraction.country,
   },
   geo: {
@@ -43,13 +49,16 @@ const jsonLd = {
   openingHoursSpecification: [
     {
       '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+      dayOfWeek: attraction.openingDays,
       opens: attraction.hoursOpen,
       closes: attraction.hoursClose,
     },
   ],
   isAccessibleForFree: true,
   publicAccess: true,
+  currenciesAccepted: attraction.currenciesAccepted,
+  paymentAccepted: attraction.paymentAccepted,
+  hasMap: attraction.mapsUrl,
   touristType: ['Domestic', 'International'],
   aggregateRating: {
     '@type': 'AggregateRating',
@@ -60,12 +69,19 @@ const jsonLd = {
   },
   sameAs: [attraction.mapsUrl],
 };
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [attractionLd],
+};
 ---
 <!doctype html>
 <html lang={htmlLang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#042f2e" />
+    <link rel="manifest" href="/manifest.json" />
     <title>{pageTitle}</title>
     <meta name="description" content={pageDesc} />
     <link rel="canonical" href={canonical} />
@@ -80,6 +96,7 @@ const jsonLd = {
     <meta property="og:url" content={canonical} />
     <meta property="og:locale" content={ogLocale[lang] ?? lang} />
     <meta property="og:image" content={`${siteConfig.baseUrl}/gallery/phnom-penh-night-market-1.jpg`} />
+    <meta property="og:image:alt" content="Stalls at Phnom Penh Night Market along the Riverside in Phnom Penh, Cambodia" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />

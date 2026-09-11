@@ -1,0 +1,560 @@
+---
+import { getI18n } from '../i18n/ui';
+import { attraction } from '../config/site';
+
+const { lang, messages } = getI18n(Astro.url);
+const w = messages.weather;
+
+// Fetched in the visitor's browser (the provider needs no API key), so the
+// advice refreshes with the forecast instead of with each site rebuild.
+// The payload carries only coordinates plus already-translated copy.
+const weatherConfig = {
+  lang,
+  lat: attraction.lat,
+  lon: attraction.lng,
+  timezone: attraction.timezone,
+  // Weekday names come from the locale files instead of Intl: browsers without
+  // Khmer locale data silently fall back to the system language.
+  weekdays: w.weekdays,
+  text: {
+    tonight: w.tonight,
+    todayShort: w.todayShort,
+    rainChance: w.rainChance,
+    feelsLike: w.feelsLike,
+    wind: w.wind,
+    windForce: w.windForce,
+    uv: w.uv,
+    mugginess: w.mugginess,
+    marketOpen: w.marketOpen,
+    marketClosed: w.marketClosed,
+    riskTitle: w.riskTitle,
+    buckets: w.buckets,
+    uvLevels: w.uvLevels,
+    muggyLevels: w.muggyLevels,
+    conditions: w.conditions,
+    rules: w.rules,
+    adviceNote: w.adviceNote,
+    updated: w.updated,
+    error: w.error,
+    noData: w.noData,
+  },
+};
+---
+
+<section id="weather" class="mx-auto max-w-6xl px-4 py-14">
+  <div
+    class="overflow-hidden rounded-3xl border border-black/5 bg-gradient-to-br from-sky-50 via-white to-amber-50 shadow-xl shadow-teal-900/5"
+  >
+    <div class="p-6 sm:p-8">
+      <div class="flex items-start gap-3">
+        <span class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-sky-600 text-white">🌤️</span>
+        <div>
+          <h2 class="text-2xl font-bold text-gray-900 sm:text-3xl">{w.title}</h2>
+          <p class="mt-1 text-sm text-gray-600">{w.subtitle}</p>
+        </div>
+      </div>
+
+      <div id="weather-panel" class="mt-6">
+        <!-- Risk banner: stays hidden unless the forecast triggers a warning. -->
+        <div id="weather-risk" class="hidden"></div>
+
+        <div id="weather-tonight" class="rounded-2xl border border-black/5 bg-white/80 p-5">
+          <p class="text-sm text-gray-500">{w.loading}</p>
+        </div>
+
+        <div id="weather-advice" class="mt-4 grid gap-3 sm:grid-cols-3"></div>
+
+        <div class="mt-6">
+          <h3 class="text-sm font-semibold uppercase tracking-wide text-gray-500">{w.forecastTitle}</h3>
+          <ul id="weather-days" class="mt-3 grid grid-cols-4 gap-2 sm:grid-cols-7"></ul>
+        </div>
+
+        <p id="weather-status" class="mt-4 text-xs text-gray-500"></p>
+
+        <noscript>
+          <p class="mt-4 text-sm text-gray-600">
+            {messages.quickFacts.hoursLabel}: {messages.quickFacts.hoursValue}
+          </p>
+        </noscript>
+      </div>
+
+      <p class="mt-6 border-t border-black/5 pt-4 text-sm text-gray-600">{w.seasonNote}</p>
+    </div>
+  </div>
+</section>
+
+<script type="application/json" id="weather-config" is:inline set:html={JSON.stringify(weatherConfig)}></script>
+
+<script>
+  type WeatherConfig = {
+    lang: string;
+    lat: number;
+    lon: number;
+    timezone: string;
+    weekdays: { long: string[]; short: string[] };
+    text: {
+      tonight: string;
+      todayShort: string;
+      rainChance: string;
+      feelsLike: string;
+      wind: string;
+      windForce: string;
+      uv: string;
+      mugginess: string;
+      marketOpen: string;
+      marketClosed: string;
+      riskTitle: string;
+      buckets: Record<string, string>;
+      uvLevels: Record<string, string>;
+      muggyLevels: Record<string, string>;
+      conditions: Record<string, string>;
+      rules: Record<string, { risk?: string; outfit?: string; plan?: string; pack?: string }>;
+      adviceNote: string;
+      updated: string;
+      error: string;
+      noData: string;
+    };
+  };
+
+  type Metrics = {
+    code: number;
+    temp: number;
+    tempMax: number;
+    tempMin: number;
+    feels: number;
+    feelsMax: number;
+    humidity: number;
+    pop: number | null;
+    windMax: number;
+    gustMax: number;
+    uvMax: number;
+    precipSum: number;
+  };
+
+  // The market only opens on Friday, Saturday and Sunday (0 = Sunday).
+  const MARKET_DAYS = [0, 5, 6];
+  const BUCKETS: Array<'outfit' | 'plan' | 'pack'> = ['outfit', 'plan', 'pack'];
+  const BUCKET_ICON: Record<string, string> = { outfit: '👕', plan: '🗺️', pack: '🎒' };
+  const BUCKET_LIMIT = 3;
+
+  // Ordered by priority: safety warnings first, pleasant-weather notes last.
+  // Only rules that match the current forecast contribute text, and each bucket
+  // is capped, so the panel never turns into a wall of generic tips.
+  const RULES: Array<{ id: string; risk?: boolean; test: (m: Metrics) => boolean }> = [
+    { id: 'thunder', risk: true, test: (m) => [95, 96, 99].indexOf(m.code) > -1 },
+    {
+      id: 'rainHeavy',
+      risk: true,
+      test: (m) => [63, 65, 66, 67, 81, 82].indexOf(m.code) > -1 || m.precipSum >= 20,
+    },
+    { id: 'windSevere', risk: true, test: (m) => m.windMax >= 50 || m.gustMax >= 65 },
+    { id: 'fog', risk: true, test: (m) => [45, 48].indexOf(m.code) > -1 },
+    { id: 'heatSevere', risk: true, test: (m) => m.feelsMax >= 38 },
+    { id: 'rainLight', test: (m) => [51, 53, 55, 56, 57, 61, 80].indexOf(m.code) > -1 },
+    // Only worth saying when the forecast is otherwise dry, so it never repeats
+    // the rain wording above.
+    { id: 'rainHigh', test: (m) => (m.pop || 0) >= 60 && m.code < 51 },
+    { id: 'heat', test: (m) => m.tempMax >= 32 },
+    { id: 'uvHigh', test: (m) => m.uvMax >= 6 },
+    { id: 'windStrong', test: (m) => m.windMax >= 30 || m.gustMax >= 50 },
+    { id: 'muggy', test: (m) => muggyLevel(m.humidity, m.temp) !== 'comfortable' },
+    { id: 'tempSwing', test: (m) => m.tempMax - m.tempMin > 8 },
+    { id: 'cloudy', test: (m) => m.code === 2 || m.code === 3 },
+    { id: 'clear', test: (m) => m.code <= 1 },
+  ];
+
+  function conditionFromCode(code: number): { icon: string; key: string } {
+    if (code === 0) return { icon: '☀️', key: 'clear' };
+    if (code === 1 || code === 2) return { icon: '🌤️', key: 'partly' };
+    if (code === 3) return { icon: '☁️', key: 'cloudy' };
+    if (code === 45 || code === 48) return { icon: '🌫️', key: 'fog' };
+    if (code >= 51 && code <= 57) return { icon: '🌦️', key: 'drizzle' };
+    if (code >= 61 && code <= 67) return { icon: '🌧️', key: 'rain' };
+    if (code >= 71 && code <= 77) return { icon: '🌧️', key: 'rain' };
+    if (code >= 80 && code <= 82) return { icon: '🌦️', key: 'showers' };
+    if (code >= 95) return { icon: '⛈️', key: 'thunder' };
+    return { icon: '🌤️', key: 'partly' };
+  }
+
+  // Wind in plain language: visitors understand "force 5" better than "39 km/h".
+  function beaufort(kmh: number): number {
+    const limits = [1, 6, 12, 20, 29, 39, 50, 62, 75, 89, 103, 118];
+    let force = 0;
+    while (force < 12 && kmh >= limits[force]) force++;
+    return force;
+  }
+
+  function uvLevel(value: number): string {
+    if (value < 3) return 'low';
+    if (value < 6) return 'moderate';
+    if (value < 8) return 'high';
+    if (value < 11) return 'veryHigh';
+    return 'extreme';
+  }
+
+  // Describes how the air feels rather than quoting a humidity percentage.
+  function muggyLevel(humidity: number, temp: number): string {
+    if (humidity >= 85 || (humidity >= 75 && temp >= 30)) return 'muggy';
+    if (humidity >= 70 && temp >= 27) return 'sticky';
+    return 'comfortable';
+  }
+
+  // The forecast and the opening hours are both Phnom Penh local, so the stamp
+  // is shown in that timezone rather than on the visitor's own clock.
+  function marketTime(timezone: string): string {
+    const now = new Date();
+    try {
+      return new Intl.DateTimeFormat('en-GB', {
+        timeZone: timezone,
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false,
+      }).format(now);
+    } catch (error) {
+      const hh = String(now.getHours()).padStart(2, '0');
+      const mm = String(now.getMinutes()).padStart(2, '0');
+      return hh + ':' + mm;
+    }
+  }
+
+  function makeEl(tag: string, className?: string, text?: string) {
+    const node = document.createElement(tag);
+    if (className) node.className = className;
+    if (text != null) node.textContent = text;
+    return node;
+  }
+
+  function numAt(list: unknown, index: number, fallback: number): number {
+    const arr = list as number[] | undefined;
+    return arr && typeof arr[index] === 'number' ? arr[index] : fallback;
+  }
+
+  function numAtOrNull(list: unknown, index: number): number | null {
+    const arr = list as number[] | undefined;
+    return arr && typeof arr[index] === 'number' ? arr[index] : null;
+  }
+
+  function boot(cfg: WeatherConfig) {
+    const t = cfg.text;
+    const weekday = (dayIndex: number, form: 'long' | 'short') => {
+      const list = cfg.weekdays && cfg.weekdays[form];
+      return list && list[dayIndex] ? list[dayIndex] : '';
+    };
+    const riskEl = document.getElementById('weather-risk');
+    const tonightEl = document.getElementById('weather-tonight');
+    const adviceEl = document.getElementById('weather-advice');
+    const daysEl = document.getElementById('weather-days');
+    const statusEl = document.getElementById('weather-status');
+    if (!riskEl || !tonightEl || !adviceEl || !daysEl) return;
+
+    const cacheKey = 'ppnm-weather-v2-' + cfg.lang;
+    const ttl = 60 * 60 * 1000;
+    const parseDay = (value: string) => new Date(value + 'T12:00:00');
+
+    function chip(icon: string, label: string, value: string) {
+      const node = makeEl(
+        'span',
+        'inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1.5 text-xs ring-1 ring-black/5'
+      );
+      node.appendChild(makeEl('span', null, icon));
+      node.appendChild(makeEl('span', 'text-gray-500', label));
+      node.appendChild(makeEl('span', 'font-bold text-gray-900', value));
+      return node;
+    }
+
+    function render(data: any) {
+      const daily = data && data.daily;
+      const current = data && data.current;
+      if (!daily || !Array.isArray(daily.time) || daily.time.length === 0) {
+        if (statusEl) statusEl.textContent = t.noData;
+        return;
+      }
+
+      const day0 = parseDay(daily.time[0]);
+      const condition = conditionFromCode(daily.weather_code[0]);
+      const tempMax = numAt(daily.temperature_2m_max, 0, 30);
+      const tempMin = numAt(daily.temperature_2m_min, 0, 24);
+      const temp =
+        current && typeof current.temperature_2m === 'number'
+          ? current.temperature_2m
+          : (tempMax + tempMin) / 2;
+      const feels =
+        current && typeof current.apparent_temperature === 'number'
+          ? current.apparent_temperature
+          : temp;
+      const humidity =
+        current && typeof current.relative_humidity_2m === 'number'
+          ? current.relative_humidity_2m
+          : 78;
+      const pop = numAtOrNull(daily.precipitation_probability_max, 0);
+      const windMax = numAt(daily.wind_speed_10m_max, 0, 0);
+      const gustMax = numAt(daily.wind_gusts_10m_max, 0, 0);
+      const uvMax = numAt(daily.uv_index_max, 0, 0);
+      const precipSum = numAt(daily.precipitation_sum, 0, 0);
+      const force = beaufort(
+        current && typeof current.wind_speed_10m === 'number' ? current.wind_speed_10m : windMax
+      );
+      const air = muggyLevel(humidity, temp);
+
+      const metrics: Metrics = {
+        code: daily.weather_code[0],
+        temp,
+        tempMax,
+        tempMin,
+        feels,
+        feelsMax: numAt(daily.apparent_temperature_max, 0, tempMax),
+        humidity,
+        pop,
+        windMax,
+        gustMax,
+        uvMax,
+        precipSum,
+      };
+
+      // ---- Conditional advice -------------------------------------------------
+      const accum: Record<string, string[]> = { outfit: [], plan: [], pack: [] };
+      const risks: string[] = [];
+
+      for (const rule of RULES) {
+        let fired = false;
+        try {
+          fired = rule.test(metrics);
+        } catch (error) {
+          fired = false;
+        }
+        if (!fired) continue;
+
+        const copy: { risk?: string; outfit?: string; plan?: string; pack?: string } | undefined =
+          t.rules[rule.id];
+        if (!copy) continue;
+
+        if (rule.risk && copy.risk) risks.push(copy.risk);
+        for (const bucket of BUCKETS) {
+          const line = copy[bucket];
+          if (line && accum[bucket].length < BUCKET_LIMIT) accum[bucket].push(line);
+        }
+      }
+
+      // ---- Risk banner (pinned above everything, only when triggered) --------
+      riskEl.textContent = '';
+      if (risks.length > 0) {
+        riskEl.className = 'rounded-2xl border border-red-200 bg-red-50 p-4';
+        const riskHead = makeEl('div', 'flex items-center gap-2');
+        riskHead.appendChild(makeEl('span', 'text-lg leading-none', '⚠️'));
+        riskHead.appendChild(
+          makeEl('p', 'text-sm font-bold uppercase tracking-wide text-red-800', t.riskTitle)
+        );
+        riskEl.appendChild(riskHead);
+
+        const riskList = makeEl('ul', 'mt-2 space-y-1.5');
+        for (const line of risks) {
+          const li = makeEl('li', 'flex gap-2 text-sm font-medium text-red-800');
+          li.appendChild(makeEl('span', null, '•'));
+          li.appendChild(makeEl('span', null, line));
+          riskList.appendChild(li);
+        }
+        riskEl.appendChild(riskList);
+      } else {
+        riskEl.className = 'hidden';
+      }
+
+      // ---- Current conditions -------------------------------------------------
+      tonightEl.textContent = '';
+
+      const head = makeEl('div', 'flex flex-wrap items-center gap-4');
+      head.appendChild(makeEl('span', 'text-5xl leading-none', condition.icon));
+
+      const tempWrap = makeEl('div');
+      tempWrap.appendChild(
+        makeEl('p', 'text-4xl font-bold leading-none text-gray-900', Math.round(temp) + '°')
+      );
+      tempWrap.appendChild(
+        makeEl(
+          'p',
+          'mt-1.5 text-sm text-gray-600',
+          [
+            t.tonight,
+            weekday(day0.getDay(), 'long'),
+            t.conditions[condition.key] || '',
+          ]
+            .filter(Boolean)
+            .join(' · ')
+        )
+      );
+      tempWrap.appendChild(
+        makeEl(
+          'p',
+          'mt-0.5 text-sm text-gray-500',
+          '↑' + Math.round(tempMax) + '°   ↓' + Math.round(tempMin) + '°'
+        )
+      );
+      head.appendChild(tempWrap);
+
+      const isMarketDay = MARKET_DAYS.indexOf(day0.getDay()) > -1;
+      head.appendChild(
+        makeEl(
+          'span',
+          isMarketDay
+            ? 'ml-auto inline-flex items-center gap-1.5 rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold text-emerald-800'
+            : 'ml-auto inline-flex items-center gap-1.5 rounded-full bg-gray-200 px-3 py-1 text-xs font-bold text-gray-700',
+          isMarketDay ? '✅ ' + t.marketOpen : '🚫 ' + t.marketClosed
+        )
+      );
+      tonightEl.appendChild(head);
+
+      const chips = makeEl('div', 'mt-4 flex flex-wrap gap-2');
+      chips.appendChild(chip('🌡️', t.feelsLike, Math.round(feels) + '°'));
+      chips.appendChild(chip('💧', t.rainChance, pop == null ? '—' : pop + '%'));
+      chips.appendChild(
+        chip('💨', t.wind, (t.windForce || '{n}').replace('{n}', String(force)))
+      );
+      if (uvMax >= 3) chips.appendChild(chip('🔆', t.uv, t.uvLevels[uvLevel(uvMax)] || ''));
+      if (air !== 'comfortable') chips.appendChild(chip('💦', t.mugginess, t.muggyLevels[air] || ''));
+      tonightEl.appendChild(chips);
+
+      // ---- Advice buckets (empty ones are not rendered at all) ---------------
+      adviceEl.textContent = '';
+      // Once a warning is showing, routine tips step back so safety reads first.
+      const cardCls =
+        risks.length > 0
+          ? 'rounded-2xl border border-dashed border-gray-200 bg-white/60 p-4'
+          : 'rounded-2xl border border-black/5 bg-white/80 p-4';
+
+      for (const bucket of BUCKETS) {
+        const lines = accum[bucket];
+        if (lines.length === 0) continue;
+
+        const card = makeEl('div', cardCls);
+        const cardHead = makeEl('div', 'flex items-center gap-2');
+        cardHead.appendChild(makeEl('span', 'text-base leading-none', BUCKET_ICON[bucket]));
+        cardHead.appendChild(makeEl('p', 'text-sm font-bold text-gray-900', t.buckets[bucket] || ''));
+        card.appendChild(cardHead);
+
+        const list = makeEl('ul', 'mt-2 space-y-1.5');
+        for (const line of lines) {
+          const li = makeEl('li', 'flex gap-2 text-sm text-gray-700');
+          li.appendChild(makeEl('span', 'text-teal-600', '✓'));
+          li.appendChild(makeEl('span', null, line));
+          list.appendChild(li);
+        }
+        card.appendChild(list);
+        adviceEl.appendChild(card);
+      }
+
+      if (adviceEl.children.length > 0) {
+        adviceEl.appendChild(
+          makeEl('p', 'text-[11px] leading-snug text-gray-400 sm:col-span-3', t.adviceNote)
+        );
+      }
+
+      // ---- 7-day forecast -----------------------------------------------------
+      daysEl.textContent = '';
+      const count = Math.min(7, daily.time.length);
+      for (let i = 0; i < count; i++) {
+        const day = parseDay(daily.time[i]);
+        const dayCondition = conditionFromCode(daily.weather_code[i]);
+        const open = MARKET_DAYS.indexOf(day.getDay()) > -1;
+        const chance = numAtOrNull(daily.precipitation_probability_max, i);
+
+        const li = makeEl(
+          'li',
+          open
+            ? 'rounded-2xl border border-emerald-100 bg-white/80 p-2.5 text-center'
+            : 'rounded-2xl border border-black/5 bg-white/50 p-2.5 text-center'
+        );
+        li.appendChild(
+          makeEl(
+            'p',
+            'text-[11px] font-bold uppercase tracking-wide text-gray-500',
+            i === 0 ? t.todayShort : weekday(day.getDay(), 'short')
+          )
+        );
+        li.appendChild(makeEl('p', 'mt-1.5 text-xl leading-none', dayCondition.icon));
+        li.appendChild(
+          makeEl(
+            'p',
+            'mt-1.5 text-xs font-bold text-gray-900',
+            Math.round(numAt(daily.temperature_2m_max, i, 0)) +
+              '° / ' +
+              Math.round(numAt(daily.temperature_2m_min, i, 0)) +
+              '°'
+          )
+        );
+        li.appendChild(
+          makeEl(
+            'p',
+            'mt-1 text-[11px] font-medium text-sky-700',
+            '💧' + (chance == null ? '—' : chance + '%')
+          )
+        );
+        li.appendChild(
+          makeEl(
+            'p',
+            open
+              ? 'mt-1 text-[10px] font-bold leading-tight text-emerald-700'
+              : 'mt-1 text-[10px] leading-tight text-gray-400',
+            open ? '● ' + t.marketOpen : t.marketClosed
+          )
+        );
+        daysEl.appendChild(li);
+      }
+
+      if (statusEl) {
+        statusEl.textContent = t.updated + ' ' + marketTime(cfg.timezone);
+      }
+    }
+
+    let cached: any = null;
+    try {
+      const raw = sessionStorage.getItem(cacheKey);
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        if (parsed && typeof parsed.t === 'number' && Date.now() - parsed.t < ttl) cached = parsed.d;
+      }
+    } catch (error) {
+      /* storage unavailable — fall through to a live request */
+    }
+
+    if (cached) {
+      render(cached);
+      return;
+    }
+
+    const url =
+      'https://api.open-meteo.com/v1/forecast?latitude=' +
+      cfg.lat +
+      '&longitude=' +
+      cfg.lon +
+      '&current=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m,wind_gusts_10m&daily=weather_code,temperature_2m_max,temperature_2m_min,apparent_temperature_max,uv_index_max,precipitation_sum,precipitation_probability_max,wind_speed_10m_max,wind_gusts_10m_max&timezone=' +
+      encodeURIComponent(cfg.timezone) +
+      '&forecast_days=7';
+
+    fetch(url)
+      .then((response) =>
+        response.ok ? response.json() : Promise.reject(new Error('bad response'))
+      )
+      .then((data) => {
+        try {
+          sessionStorage.setItem(cacheKey, JSON.stringify({ t: Date.now(), d: data }));
+        } catch (error) {
+          /* ignore quota errors */
+        }
+        render(data);
+      })
+      .catch(() => {
+        tonightEl.textContent = '';
+        tonightEl.appendChild(makeEl('p', 'text-sm text-gray-600', t.error));
+        if (statusEl) statusEl.textContent = '';
+      });
+  }
+
+  const configEl = document.getElementById('weather-config');
+  if (configEl) {
+    try {
+      const cfg = JSON.parse(configEl.textContent || '') as WeatherConfig;
+      if (cfg && cfg.text && cfg.text.rules) boot(cfg);
+    } catch (error) {
+      /* ignore malformed config */
+    }
+  }
+</script>

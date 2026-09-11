@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Phnom Penh Night Market Guide | Location, Hours & Travel Tips",
-    "description": "Explore Phnom Penh Night Market in Cambodia. Find opening hours, location, food, shopping, transportation and travel information."
+    "title": "Phnom Penh Night Market (Phsar Reatrey) {year}: Hours, Food & Weather",
+    "description": "Planning a visit to Phnom Penh Night Market (Phsar Reatrey) on Riverside? Check opening hours (Fri–Sun), top street food, live evening weather and Google Map location."
   },
   "header": {
     "siteName": "Phnom Penh Night Market",
@@ -11,6 +11,7 @@
       "food": "Food",
       "shopping": "Shopping",
       "location": "Location",
+      "weather": "Weather",
       "faq": "FAQ",
       "facilities": "Facilities"
     }
@@ -24,7 +25,7 @@
   },
   "infoCards": {
     "type": "Night Market",
-    "hours": "17:00 – 23:00",
+    "hours": "Fri–Sun 17:00 – 23:00",
     "location": "Riverside (Sisowath Quay)",
     "rating": "4.0",
     "reviews": "11,800+ Reviews",
@@ -36,11 +37,130 @@
       "reviews": "Reviews"
     }
   },
+  "quickFacts": {
+    "title": "Quick Facts",
+    "intro": "The essentials at a glance before you plan your visit.",
+    "hoursLabel": "Opening Hours",
+    "hoursValue": "Friday – Sunday, 5:00 PM – 11:00 PM",
+    "locationLabel": "Location",
+    "locationValue": "Preah Sisowath Quay (Riverside), Phnom Penh",
+    "feeLabel": "Entrance",
+    "feeValue": "Free",
+    "note": "The market is closed Monday – Thursday. It is an evening event, so stalls only start to open from around 5 PM."
+  },
+  "weather": {
+    "title": "Evening Weather in Phnom Penh Riverside",
+    "subtitle": "Tonight's conditions by the river — and exactly what they mean for your visit.",
+    "forecastTitle": "7-day forecast",
+    "tonight": "Tonight",
+    "todayShort": "Today",
+    "rainChance": "Rain",
+    "feelsLike": "Feels like",
+    "wind": "Wind",
+    "windForce": "Force {n}",
+    "uv": "Sun",
+    "mugginess": "Air",
+    "marketOpen": "Market open",
+    "marketClosed": "Market closed",
+    "updated": "Updated",
+    "loading": "Loading tonight's forecast…",
+    "error": "Live forecast is unavailable right now — the market is open Friday to Sunday, 5:00 PM to 11:00 PM.",
+    "noData": "Forecast details are temporarily unavailable.",
+    "riskTitle": "Weather risk",
+    "buckets": {
+      "outfit": "What to wear",
+      "plan": "Plan your evening",
+      "pack": "What to bring"
+    },
+    "uvLevels": {
+      "low": "Weak",
+      "moderate": "Moderate",
+      "high": "Strong",
+      "veryHigh": "Very strong",
+      "extreme": "Extreme"
+    },
+    "muggyLevels": {
+      "comfortable": "Comfortable",
+      "sticky": "A little sticky",
+      "muggy": "Very sticky"
+    },
+    "weekdays": {
+      "long": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      "short": ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+    },
+    "conditions": {
+      "clear": "Clear",
+      "partly": "Partly cloudy",
+      "cloudy": "Cloudy",
+      "fog": "Foggy",
+      "drizzle": "Drizzle",
+      "rain": "Rain",
+      "showers": "Showers",
+      "thunder": "Thunderstorm"
+    },
+    "rules": {
+      "thunder": {
+        "risk": "Thunderstorms are forecast — avoid the open riverside stretch and do not shelter under trees.",
+        "plan": "If it thunders, the covered food aisles are the safest place to wait it out."
+      },
+      "rainHeavy": {
+        "risk": "Heavy rain expected — the open square turns muddy and the walkways get slippery.",
+        "plan": "Consider coming earlier in the evening, or picking another night.",
+        "pack": "A raincoat works better than a long umbrella here — the riverside is gusty."
+      },
+      "windSevere": {
+        "risk": "Strong wind — hold onto hats and loose items, and keep clear of the river railing."
+      },
+      "fog": {
+        "risk": "Hazy along the river — do not count on a sunset view this evening.",
+        "plan": "The food stalls still look atmospheric, but riverside photo spots will be washed out."
+      },
+      "heatSevere": {
+        "risk": "Extremely hot and humid — keep the visit short and rest in the covered seating areas."
+      },
+      "rainLight": {
+        "plan": "Light rain — the tiled walkways turn slippery, so take it slowly between stalls.",
+        "pack": "A folding umbrella is enough."
+      },
+      "rainHigh": {
+        "plan": "Rain is likely tonight — most food stalls have covered seating, so you can still eat in the dry.",
+        "pack": "Pack an umbrella just in case."
+      },
+      "heat": {
+        "outfit": "Hot and humid — go for light, breathable clothing.",
+        "plan": "Come later in the evening once it cools down; the open square has little shade.",
+        "pack": "Extra drinking water and a small towel."
+      },
+      "uvHigh": {
+        "outfit": "Strong sun during the day — cover up if you are out before sunset.",
+        "pack": "Sunscreen, sunglasses and a hat."
+      },
+      "windStrong": {
+        "plan": "Breezy along the water — the riverside promenade is the most exposed part of the market.",
+        "pack": "A hat that will not blow away, and skip loose long skirts."
+      },
+      "muggy": {
+        "outfit": "Sticky, humid air — choose quick-dry fabrics you will not mind sweating in.",
+        "pack": "Insect repellent and a spare shirt."
+      },
+      "tempSwing": {
+        "outfit": "The temperature drops after dark — a light layer is easy to add or remove."
+      },
+      "cloudy": {
+        "plan": "Soft, even light — good for photos and for lingering over street food."
+      },
+      "clear": {
+        "plan": "Clear evening — ideal for walking the riverside promenade and the open-air food aisles."
+      }
+    },
+    "adviceNote": "Advice is generated automatically from the local forecast.",
+    "seasonNote": "Phnom Penh's rainy season runs roughly from May to October, when short evening downpours are common. The market is open-air, but showers usually pass quickly and many food stalls have covered seating."
+  },
   "intro": {
     "title": "About Phnom Penh Night Market",
     "body": [
       "The Phnom Penh Night Market (Khmer: ផ្សាររាត្រី ភ្នំពេញ) is an open-air evening market located on the riverfront along Preah Sisowath Quay, near the junction with Street 106 in central Phnom Penh, Cambodia.",
-      "Every evening as the sun sets, vendors set up stalls selling clothing, accessories, handicrafts, and souvenirs, while a large food section offers grilled dishes, noodles, and drinks beside the river.",
+      "On Friday, Saturday and Sunday evenings, as the sun sets, vendors set up stalls selling clothing, accessories, handicrafts, and souvenirs, while a large food section offers grilled dishes, noodles, and drinks beside the river.",
       "More than a shopping spot, the market reflects everyday urban life in Cambodia's capital — a relaxed place where residents wind down and visitors get a feel for local culture after dark."
     ]
   },
@@ -94,10 +214,16 @@
         "title": "Souvenirs",
         "desc": "Postcards, magnets, and small keepsakes to remember your trip."
       }
-    ]
+    ],
+    "notes": {
+      "stallsTitle": "What You Can Buy",
+      "stalls": "Stalls are grouped roughly by type — clothing and accessories, handicrafts and silver, and souvenirs and gifts, with a dedicated street-food zone along the river.",
+      "bargainTitle": "Bargaining & Payment",
+      "bargain": "Haggling is normal and welcome at the market — keep it friendly. Most stalls take cash (USD or KHR); small purchases are easiest in riel or $1/$5 notes. Larger shops may accept card, ABA Pay or QR-code payment, but never assume it — carry some cash."
+    }
   },
   "food": {
-    "title": "Food & Drinks",
+    "title": "Top Street Food to Try at Phnom Penh Night Market",
     "intro": "The food court near the riverbank serves the most authentic Khmer home flavors — here are the dishes worth seeking out by name.",
     "items": [
       {
@@ -148,8 +274,8 @@
     ]
   },
   "transport": {
-    "title": "How To Get There",
-    "intro": "The market sits on the central riverfront, within reach of most downtown areas.",
+    "title": "How to Get to Riverside Night Market",
+    "intro": "The market sits on the central riverfront along Preah Sisowath Quay, within reach of most downtown areas.",
     "modes": [
       {
         "icon": "🚶",
@@ -247,12 +373,16 @@
     "title": "FAQ",
     "items": [
       {
-        "q": "What time does Phnom Penh Night Market open?",
-        "a": "The market generally begins to open around 17:00 each evening."
+        "q": "What are the opening hours of Phnom Penh Night Market?",
+        "a": "The night market is open every Friday, Saturday and Sunday from 5:00 PM to 11:00 PM. It is closed from Monday to Thursday."
       },
       {
-        "q": "Is Phnom Penh Night Market free to enter?",
-        "a": "Yes, entering the market area is usually free; you pay only for what you buy or eat."
+        "q": "Which days is Phnom Penh Night Market open?",
+        "a": "It opens on weekends only — Friday, Saturday and Sunday. Plan your visit around those days, as the site is empty on other evenings."
+      },
+      {
+        "q": "Is there an entrance fee for the night market?",
+        "a": "No, admission to the Phnom Penh Night Market is free. You only pay for the food and goods you buy."
       },
       {
         "q": "What can visitors buy at the night market?",
@@ -266,6 +396,7 @@
   },
   "footer": {
     "siteName": "Phnom Penh Night Market",
+    "multilingual": "Phnom Penh Night Market · Riverside Night Market · ផ្សាររាត្រី ភ្នំពេញ · 金边夜市",
     "tagline": "An independent travel information guide — not a booking or commercial site.",
     "disclaimer": "Attraction information is cross-checked against public materials from Phnom Penh City Hall, the Phnom Penh Tourism Department, and the Cambodia Ministry of Tourism. No commercial recommendations are included. Verify hours and details before your visit.",
     "rights": "© {year} Phnom Penh Night Market Guide. Non-profit travel information.",
@@ -274,6 +405,9 @@
     "links": {
       "maps": "View on Google Maps"
     },
+    "tourismNote": "For official national tourism information, visit the",
+    "tourismLink": "Cambodia Official Tourism Portal",
+    "imageCredit": "Disclaimer: all photographs on this site are the property and copyright of their respective photographers.",
     "legalTitle": "Legal & privacy",
     "privacy": "Privacy Policy",
     "terms": "Terms of Service",

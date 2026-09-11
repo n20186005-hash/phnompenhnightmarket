@@ -37,8 +37,19 @@ export function getI18n(url: URL) {
 
 export function buildAlternates(path = ''): Record<string, string> {
   const base = siteConfig.baseUrl;
-  const clean = path.replace(/^\/+/, '').replace(/\/+$/, '');
-  const mk = (l: string) => `${base}/${l}${clean ? '/' + clean : ''}`;
+  const segments = path.replace(/^\/+/, '').replace(/\/+$/, '').split('/').filter(Boolean);
+  // The incoming path may already start with a locale segment (e.g. /en/...),
+  // so strip it before rebuilding each locale's URL. Otherwise prefixes double up.
+  if (segments.length > 0 && (languagesList as readonly string[]).includes(segments[0])) {
+    segments.shift();
+  }
+  const rest = segments.join('/');
+  const mk = (l: string) => {
+    const prefix = l === defaultLang ? '' : `/${l}`;
+    const tail = rest ? `/${rest}` : '';
+    const suffix = `${prefix}${tail}`;
+    return `${base}${suffix.length > 0 ? suffix : '/'}`;
+  };
   return {
     km: mk('km'),
     en: mk('en'),

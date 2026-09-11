@@ -1,0 +1,37 @@
+---
+import { getI18n } from '../i18n/ui';
+const { messages } = getI18n(Astro.url);
+const q = messages.quickFacts;
+
+const facts = [
+  { icon: '🕒', label: q.hoursLabel, value: q.hoursValue },
+  { icon: '📍', label: q.locationLabel, value: q.locationValue },
+  { icon: '🎟️', label: q.feeLabel, value: q.feeValue },
+];
+---
+
+<section id="quick-facts" class="mx-auto max-w-6xl px-4 py-10">
+  <div class="rounded-3xl border border-teal-900/10 bg-gradient-to-br from-teal-50 to-amber-50 p-6 shadow-sm sm:p-8">
+    <div class="flex items-center gap-3">
+      <span class="grid h-10 w-10 place-items-center rounded-full bg-teal-700 text-white">ℹ️</span>
+      <h2 class="text-2xl font-bold text-gray-900">{q.title}</h2>
+    </div>
+    {q.intro && <p class="mt-3 max-w-3xl text-gray-600">{q.intro}</p>}
+
+    <dl class="mt-6 grid gap-4 sm:grid-cols-3">
+      {
+        facts.map((f) => (
+          <div class="rounded-2xl border border-black/5 bg-white p-5">
+            <dt class="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-teal-700">
+              <span class="text-base">{f.icon}</span>
+              {f.label}
+            </dt>
+            <dd class="mt-2 font-semibold text-gray-900">{f.value}</dd>
+          </div>
+        ))
+      }
+    </dl>
+
+    {q.note && <p class="mt-4 text-sm text-gray-500">💡 {q.note}</p>}
+  </div>
+</section>
