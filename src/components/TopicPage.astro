@@ -1,0 +1,131 @@
+---
+import { getLangFromUrl, getI18n, buildAlternates } from '../i18n/ui';
+import { siteConfig } from '../config/site';
+
+interface Props {
+  topic: string;
+}
+
+const { topic } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const { messages } = getI18n(Astro.url);
+const tp = messages.topics[topic];
+if (!tp) throw new Error(`Unknown topic: ${topic}`);
+
+const langHrefs: Record<string, string> = { km: '/', en: '/en/', zh: '/zh/' };
+const base = langHrefs[lang] ?? '/';
+const alts = buildAlternates(Astro.url.pathname);
+const canonical = alts[lang] ?? alts.km;
+
+const topicsList = ['opening-hours', 'food', 'getting-there'];
+const others = topicsList.filter((t) => t !== topic);
+
+const crumbs = [
+  { name: messages.topicLinks?.homeLabel ?? messages.header.nav.overview ?? 'Home', url: base },
+  { name: tp.nav, url: `${base}${topic}/` },
+];
+
+const faqItems = (tp.faq?.items ?? []).map((it: any) => ({
+  '@type': 'Question',
+  name: it.q,
+  acceptedAnswer: { '@type': 'Answer', text: it.a },
+}));
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: crumbs.map((c, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: c.name,
+        item: `${siteConfig.baseUrl}${c.url}`,
+      })),
+    },
+    {
+      '@type': 'FAQPage',
+      '@id': `${canonical}#faq`,
+      mainEntity: faqItems,
+    },
+  ],
+};
+---
+
+<section class="mx-auto max-w-3xl px-4 py-12">
+  <nav aria-label="Breadcrumb" class="mb-6 text-sm text-gray-500">
+    {
+      crumbs.map((c, i) => (
+        <span>
+          {i > 0 && <span class="mx-1">/</span>}
+          {i === crumbs.length - 1 ? (
+            <span class="text-gray-700">{c.name}</span>
+          ) : (
+            <a href={c.url} class="text-teal-700 hover:underline">{c.name}</a>
+          )}
+        </span>
+      ))
+    }
+  </nav>
+
+  <h1 class="text-3xl font-bold text-gray-900 sm:text-4xl">{tp.meta.title}</h1>
+  <p class="mt-4 text-lg text-gray-600">{tp.intro}</p>
+
+  <div class="mt-8 space-y-8">
+    {
+      tp.sections?.map((s: any) => (
+        <div>
+          <h2 class="text-2xl font-bold text-gray-900">{s.heading}</h2>
+          {s.paragraphs?.map((p: string) => (
+            <p class="mt-3 leading-relaxed text-gray-600">{p}</p>
+          ))}
+          {s.items && (
+            <ul class="mt-3 list-disc space-y-2 pl-5 text-gray-600">
+              {s.items.map((it: string) => <li>{it}</li>)}
+            </ul>
+          )}
+        </div>
+      ))
+    }
+  </div>
+
+  <div class="mt-10 rounded-3xl border border-teal-900/10 bg-teal-50 p-6">
+    <h2 class="text-2xl font-bold text-gray-900">{tp.faq.title}</h2>
+    <div class="mt-4 space-y-3">
+      {
+        tp.faq.items.map((f: any) => (
+          <details class="rounded-2xl border border-black/5 bg-white p-4">
+            <summary class="cursor-pointer font-semibold text-gray-900">{f.q}</summary>
+            <p class="mt-2 text-gray-600">{f.a}</p>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+
+  <div class="mt-10">
+    <h2 class="text-xl font-bold text-gray-900">{messages.topicLinks?.moreTitle ?? 'More guides'}</h2>
+    <div class="mt-4 grid gap-3 sm:grid-cols-2">
+      {
+        others.map((t) => (
+          <a
+            href={`${base}${t}/`}
+            class="rounded-2xl border border-black/5 bg-white p-4 transition hover:border-teal-300 hover:shadow-sm"
+          >
+            <span class="font-semibold text-teal-700">{messages.topics[t].nav}</span>
+            <span class="mt-1 block text-sm text-gray-500">{messages.topics[t].cardDesc}</span>
+          </a>
+        ))
+      }
+      <a
+        href={base}
+        class="rounded-2xl border border-black/5 bg-white p-4 transition hover:border-teal-300 hover:shadow-sm"
+      >
+        <span class="font-semibold text-teal-700">{messages.header.nav.overview}</span>
+        <span class="mt-1 block text-sm text-gray-500">{messages.topicLinks?.intro ?? ''}</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)}></script>

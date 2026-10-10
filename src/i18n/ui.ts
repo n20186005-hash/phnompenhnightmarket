@@ -48,7 +48,9 @@ export function buildAlternates(path = ''): Record<string, string> {
     const prefix = l === defaultLang ? '' : `/${l}`;
     const tail = rest ? `/${rest}` : '';
     const suffix = `${prefix}${tail}`;
-    return `${base}${suffix.length > 0 ? suffix : '/'}`;
+    // Always append a trailing slash so canonical/hreflang URLs match the
+    // actual built routes (e.g. /en/opening-hours/ rather than /en/opening-hours).
+    return `${base}${suffix.length > 0 ? `${suffix}/` : '/'}`;
   };
   return {
     km: mk('km'),

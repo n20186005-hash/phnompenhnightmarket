@@ -37,11 +37,16 @@ export const attraction = {
   postalCode: '12200',
   timezone: 'Asia/Phnom_Penh',
   rating: '4.0',
-  reviewCount: '11816',
+  reviewCount: '11945',
+  // Source + check date for the rating snapshot, shown in the footer note so
+  // visitors know it is not collected by this site.
+  ratingSource: 'Google Maps',
+  ratingVerified: 'October 2026',
   // The market only opens on weekends: Friday, Saturday and Sunday.
   openingDays: ['Friday', 'Saturday', 'Sunday'],
   hoursOpen: '17:00',
   hoursClose: '23:00',
+  hoursVerified: 'October 2026',
   currenciesAccepted: 'USD, KHR',
   paymentAccepted: 'Cash, Credit Card, ABA Pay, QR Code',
   address: 'Preah Sisowath Quay, Phnom Penh, Cambodia',
