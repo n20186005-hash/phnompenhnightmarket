@@ -3,7 +3,11 @@ import { getI18n } from '../i18n/ui';
 import { nearbySlugs, nearbyPlaces, nearbyTranslations } from '../i18n/nearbyPlaces';
 const { messages, lang } = getI18n(Astro.url);
 const n = messages.nearby;
-const accents = ['from-teal-600 to-teal-900', 'from-amber-400 to-amber-600', 'from-teal-700 to-teal-800'];
+const nearbyPhotos = [
+  '/nearby/sisowath-quay.jpg',
+  '/nearby/royal-palace-1.jpg',
+  '/nearby/central-market-2.jpg',
+];
 const prefix = lang === 'km' ? '/' : `/${lang}/`;
 const maps = [
   'https://www.google.com/maps/search/?api=1&query=Sisowath+Quay+Riverside+Phnom+Penh+Cambodia',
@@ -20,7 +24,7 @@ const guideLabel = lang === 'zh' ? '继续探索周边与夜游指南' : lang ==
     {
       n.items.map((item: any, i: number) => (
         <div class="overflow-hidden rounded-2xl border border-black/5 bg-white shadow-sm">
-          <div class={`h-32 bg-gradient-to-br ${accents[i % accents.length]}`}></div>
+          <img src={nearbyPhotos[i]} alt={item.title} width="1200" height="800" loading="lazy" decoding="async" class="h-40 w-full object-cover" />
           <div class="p-6">
             <h3 class="font-semibold text-gray-900">{item.title}</h3>
             <p class="mt-2 text-sm text-gray-600">{item.desc}</p>
