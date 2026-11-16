@@ -1,4 +1,4 @@
-export const nearbySlugs = ['wat-phnom', 'royal-palace', 'central-market'] as const;
+export const nearbySlugs = ['wat-phnom', 'royal-palace', 'central-market', 'national-museum', 'wat-ounalom', 'independence-monument'] as const;
 
 const places = {
   'wat-phnom': {
@@ -40,12 +40,75 @@ const places = {
     tips: 'Visit in daylight, ask prices before buying and keep pedestrian aisles clear. This is a different market from the weekend Phnom Penh Night Market.', stay: 'Central-city accommodation supports both morning shopping here and an evening visit to the riverfront.',
     source: 'https://www.tourismcambodia.com/travelguides/provinces/phnom-penh/what-to-see/25_central.htm',
   },
+  'national-museum': {
+    name: 'National Museum of Cambodia', type: 'Khmer art and archaeology museum', address: 'Street 13, Sangkat Chey Chumneas, Daun Penh, Phnom Penh, Cambodia',
+    map: 'https://www.google.com/maps/search/?api=1&query=National+Museum+of+Cambodia+Phnom+Penh', hours: 'Daytime museum visit; verify the latest admission hours', price: 'Museum admission applies; check the current visitor rate', duration: '60–120 minutes',
+    manager: 'The National Museum is a Cambodian cultural institution under the Ministry of Culture and Fine Arts and the Department of Museums. Staff manage gallery access, collection care and photography rules.',
+    history: 'Designed by George Groslier, the museum was inaugurated on 13 April 1920. Its collections trace Khmer sculpture and artistic traditions across many centuries, making it an important complement to the capital’s royal landmarks.',
+    architecture: 'The red terracotta-coloured complex reinterprets Khmer temple architecture through a museum plan. Look for the pointed roofs, shaded verandas and peaceful inner courtyard.',
+    experience: 'Start with the exterior roofline, explore the chronological galleries at a comfortable pace, then rest in the central courtyard. Follow staff directions around sensitive objects.',
+    route: ['Enter from Street 13 and check the ticket desk', 'Observe the traditional-inspired entrance roof', 'Explore the permanent collection by gallery', 'Pause in the landscaped courtyard before leaving'],
+    photos: 'The entrance pavilion and courtyard are particularly photogenic; interior photography may be restricted. Observe gallery notices.',
+    tips: 'Visit earlier in the day to avoid heat; handle no exhibits and keep noise low.', stay: 'The museum lies in the central riverfront area, convenient for a daytime cultural walk before a weekend night-market visit.',
+    source: 'https://www.nmc.gov.kh/index.php/about-us/history',
+  },
+  'wat-ounalom': {
+    name: 'Wat Ounalom', type: 'Historic Buddhist monastery by the riverfront', address: 'Sisowath Quay at Street 154, Daun Penh, Phnom Penh, Cambodia',
+    map: 'https://www.google.com/maps/search/?api=1&query=Wat+Ounalom+Phnom+Penh', hours: 'Religious grounds may be accessible in daylight; check temple notices', price: 'Check at the entrance for any access or donation guidance', duration: '30–60 minutes',
+    manager: 'Wat Ounalom is an active Buddhist monastery with religious spaces maintained by its monastic community. Visitors should follow the guidance of monks and temple attendants.',
+    history: 'Tradition dates the monastery to 1443. It is associated with Cambodia’s Buddhist leadership and has long been a significant religious landmark close to the royal quarter.',
+    architecture: 'Look for layered temple roofs, ornate gables, stupas and the contrast between the sheltered precinct and the busy riverfront outside.',
+    experience: 'Enter quietly, follow open public paths and appreciate the temple exteriors. Allow space for ceremonies, prayer and monastic routines.',
+    route: ['Locate the entrance from the riverfront streets', 'Check which areas visitors may enter', 'Observe the main temple roof and decorative details', 'Return toward Sisowath Quay without disturbing worship'],
+    photos: 'Exterior gables, roof tiers and quiet courtyards make respectful subjects. Ask permission before photographing people or ceremonies.',
+    tips: 'Dress modestly, speak softly and remove footwear when directed.', stay: 'Riverfront accommodation places the monastery within a central sightseeing circuit.',
+    source: 'https://tourismcambodia.org/provinces/search/detail/172/ounalom-monastery-1549678948',
+  },
+  'independence-monument': {
+    name: 'Independence Monument', type: 'National memorial and Khmer-inspired urban landmark', address: 'Intersection of Norodom Boulevard and Sihanouk Boulevard, Phnom Penh, Cambodia',
+    map: 'https://www.google.com/maps/search/?api=1&query=Independence+Monument+Phnom+Penh', hours: 'Exterior viewing from public approaches; ceremonial access may be restricted', price: 'No ticket for viewing from public pavements', duration: '20–40 minutes',
+    manager: 'The monument stands within a prominent civic traffic circle used for official commemorations. Public approaches and ceremonial arrangements are subject to municipal and national authorities.',
+    history: 'Completed in 1958, the memorial commemorates Cambodia’s independence from France in 1953. It also forms a major ceremonial focal point of the capital.',
+    architecture: 'Designed by Cambodian architect Vann Molyvann, the lotus-like tower draws on Khmer architectural forms. Its tiered naga motifs are best viewed from safe distance.',
+    experience: 'Enjoy the monument from designated pedestrian space without entering the traffic circle. The illuminated structure can be striking after dark.',
+    route: ['Approach along a pedestrian-friendly side of Norodom Boulevard', 'Find a safe pavement view of the entire tower', 'Observe the layered Khmer motifs', 'Continue toward a nearby park or return by arranged transport'],
+    photos: 'A full-height view at dusk highlights the silhouette; use pedestrian pavements and never step into moving traffic for a photograph.',
+    tips: 'The surrounding roads are busy; cross only at legal crossings and obey any ceremonial barriers.', stay: 'Central Phnom Penh accommodation makes the monument a convenient stop on a separate city walk.',
+    source: 'https://commons.wikimedia.org/wiki/Category:Independence_Monument_(Phnom_Penh)',
+  },
 };
 
 export const nearbyPlaces: Record<string, any> = places;
 
 export const nearbyTranslations: Record<string, Record<string, any>> = {
   zh: {
+    'national-museum': {
+      name: '柬埔寨国家博物馆', type: '高棉艺术与考古博物馆', hours: '适合白天参观，请查询博物馆最新开放公告', price: '参观展馆需购票，金额以现场为准', duration: '60–120 分钟',
+      manager: '国家博物馆隶属柬埔寨文化与艺术部相关博物馆管理体系，工作人员负责展厅开放、馆藏保护及摄影规定。',
+      history: '国家博物馆由乔治·格罗斯利耶设计，于 1920 年 4 月 13 日揭幕。馆藏梳理了跨越多个世纪的高棉雕塑与艺术传统，是理解柬埔寨文化的重要场所。',
+      architecture: '红陶色建筑借鉴高棉寺庙形式，尖顶屋檐、遮阳回廊与中央庭院结合为适合展览的空间。',
+      experience: '先欣赏入口建筑，再沿展厅循序了解不同年代的雕塑，最后在庭院休息。请遵守展品保护及摄影提示。',
+      route: ['从 13 街入口查看售票信息', '观察入口高棉风格屋顶', '按展厅顺序欣赏馆藏', '在中央庭院短暂停留后离开'],
+      photos: '入口建筑与庭院适合取景；展厅内是否允许拍照以现场规定为准。', tips: '建议白天前往，勿触摸展品并保持安静。', stay: '博物馆靠近河滨及王宫，适合白天参观后于周末夜晚前往夜市。',
+    },
+    'wat-ounalom': {
+      name: '乌那隆寺（Wat Ounalom）', type: '河滨历史佛教寺院', hours: '建议白天访问，具体开放以寺庙公告为准', price: '入场与随喜捐赠方式以现场说明为准', duration: '30–60 分钟',
+      manager: '乌那隆寺是仍在使用的佛教寺院，宗教区域由寺院僧团管理维护。游客须遵守僧侣及寺院工作人员指示。',
+      history: '寺院传统上可追溯至 1443 年，长期与柬埔寨佛教领袖及宗教传承有关，位于王宫附近的历史城区。',
+      architecture: '可观察层叠寺顶、精细山墙、佛塔及安静院落，与寺外繁忙河滨形成对照。',
+      experience: '沿对外开放的通道安静游览寺院外观，为礼佛和宗教仪式留出空间。',
+      route: ['从河滨街道寻找寺院入口', '确认游客可进入的区域', '欣赏屋顶及建筑雕饰', '沿原路返回河滨步道'],
+      photos: '建议拍摄寺庙屋顶、山墙与庭院；拍摄礼佛者或仪式前须先征求同意。', tips: '衣着端庄，轻声交谈，按指引脱鞋。', stay: '河滨住宿方便把寺庙安排进市中心步行游览。',
+    },
+    'independence-monument': {
+      name: '金边独立纪念碑', type: '纪念独立的高棉风格城市地标', hours: '可从公共步道欣赏外观；官方活动期间可能限制靠近', price: '公共人行道观赏通常无需门票', duration: '20–40 分钟',
+      manager: '独立纪念碑位于重要的城市交通环岛，国家纪念活动与周边通行由相关市政和国家主管部门安排。',
+      history: '纪念碑于 1958 年建成，纪念柬埔寨 1953 年摆脱法国统治独立，至今仍是重要的国家纪念空间。',
+      architecture: '由建筑师万莫利万设计，塔身形似莲花并借鉴高棉传统建筑，层层装饰适合从安全的远处观察。',
+      experience: '在指定人行区域观察纪念碑整体轮廓；夜间灯光下的塔身也适合远景欣赏。切勿进入车流环岛。',
+      route: ['从诺罗敦大道一侧的人行区域靠近', '选择安全位置拍摄完整塔身', '观察层叠装饰及整体造型', '沿合法步道前往邻近公园或乘车离开'],
+      photos: '黄昏适合拍摄塔身剪影，勿为了取景走入机动车道。', tips: '周围车流繁忙，只使用合法过街设施，注意活动围栏。', stay: '市中心住宿适合将纪念碑安排到另一段市区步行路线。',
+    },
     'wat-phnom': {
       name: '塔山寺（Wat Phnom）', type: '历史佛教寺庙与林木山丘', hours: '适合白天参观；以寺庙现场公告时间为准', price: '外国游客可能需要支付少量入场费，金额以入口公告为准', duration: '45–75 分钟',
       manager: '塔山寺是一处持续使用的佛教宗教场所，宗教空间由寺庙社群照料，外围山丘与公共通道也属于金边城市景观的一部分。参观时应遵循寺方工作人员与当地主管部门的指引。',
@@ -75,6 +138,33 @@ export const nearbyTranslations: Record<string, Record<string, any>> = {
     },
   },
   km: {
+    'national-museum': {
+      name: 'សារមន្ទីរជាតិកម្ពុជា', type: 'សារមន្ទីរសិល្បៈ និងបុរាណវិទ្យាខ្មែរ', hours: 'គួរទស្សនាពេលថ្ងៃ; ពិនិត្យម៉ោងថ្មីរបស់សារមន្ទីរ', price: 'មានសំបុត្រចូល; ពិនិត្យតម្លៃនៅច្រក', duration: '៦០–១២០ នាទី',
+      manager: 'សារមន្ទីរជាតិជាស្ថាប័នវប្បធម៌ក្រោមក្រសួងវប្បធម៌ និងវិចិត្រសិល្បៈ។ បុគ្គលិកគ្រប់គ្រងការចូលបន្ទប់តាំងពិព័រណ៍ ការអភិរក្សវត្ថុ និងច្បាប់ថតរូប។',
+      history: 'សារមន្ទីរត្រូវបានរចនាដោយ George Groslier ហើយសម្ពោធនៅថ្ងៃទី ១៣ ខែមេសា ឆ្នាំ ១៩២០។ បណ្តុំវត្ថុបង្ហាញពីចម្លាក់ និងប្រពៃណីសិល្បៈខ្មែរជាច្រើនសតវត្សរ៍។',
+      architecture: 'អគារពណ៌ក្រហមដីយកគំរូពីស្ថាបត្យកម្មប្រាសាទខ្មែរ មានដំបូលចុងស្រួច រានហាលមានម្លប់ និងទីធ្លាកណ្តាល។',
+      experience: 'មើលដំបូលអគារខាងក្រៅ រួចទស្សនាបន្ទប់តាំងពិព័រណ៍តាមលំដាប់ និងសម្រាកនៅទីធ្លា។ សូមគោរពស្លាកហាមថតរូប។',
+      route: ['ចូលពីផ្លូវលេខ ១៣ និងពិនិត្យសំបុត្រ', 'មើលដំបូលច្រកចូល', 'ទស្សនាបណ្តុំវត្ថុតាមបន្ទប់', 'សម្រាកនៅទីធ្លាកណ្តាលមុនចេញ'],
+      photos: 'ច្រកចូល និងទីធ្លាជាទីតាំងថតល្អ។ ការថតក្នុងបន្ទប់អាស្រ័យលើបទបញ្ជា។', tips: 'ទៅពេលថ្ងៃ កុំប៉ះវត្ថុតាំង និងរក្សាភាពស្ងៀមស្ងាត់។', stay: 'សារមន្ទីរនៅជិតមាត់ទន្លេ និងព្រះបរមរាជវាំង ងាយស្រួលទៅផ្សាររាត្រីពេលល្ងាចចុងសប្តាហ៍។',
+    },
+    'wat-ounalom': {
+      name: 'វត្តឧណ្ណាលោម', type: 'វត្តព្រះពុទ្ធសាសនាប្រវត្តិសាស្ត្រក្បែរមាត់ទន្លេ', hours: 'គួរទស្សនាពេលថ្ងៃ; ពិនិត្យសេចក្តីជូនដំណឹងរបស់វត្ត', price: 'ពិនិត្យការចូល និងការបរិច្ចាគនៅច្រក', duration: '៣០–៦០ នាទី',
+      manager: 'វត្តឧណ្ណាលោមជាវត្តដែលកំពុងប្រើប្រាស់ ហើយសហគមន៍ព្រះសង្ឃថែរក្សាបរិវេណសាសនា។ ភ្ញៀវគួរគោរពការណែនាំរបស់ព្រះសង្ឃ និងបុគ្គលិកវត្ត។',
+      history: 'តាមប្រពៃណី វត្តនេះមានប្រវត្តិតាំងពីឆ្នាំ ១៤៤៣ និងមានទំនាក់ទំនងយូរអង្វែងជាមួយថ្នាក់ដឹកនាំព្រះពុទ្ធសាសនាកម្ពុជា។',
+      architecture: 'សង្កេតដំបូលវត្តជាន់ៗ ក្បាច់លម្អ ចេតិយ និងទីធ្លាស្ងប់ស្ងាត់ ដែលផ្ទុយពីផ្លូវមាត់ទន្លេនៅខាងក្រៅ។',
+      experience: 'ដើរតាមផ្លូវដែលអនុញ្ញាតដោយស្ងៀមស្ងាត់ និងទុកកន្លែងសម្រាប់អ្នកបូជា និងពិធីសាសនា។',
+      route: ['រកច្រកចូលពីផ្លូវមាត់ទន្លេ', 'ពិនិត្យកន្លែងដែលអាចចូលបាន', 'ទស្សនាដំបូល និងលម្អស្ថាបត្យកម្ម', 'ត្រឡប់ទៅមាត់ទន្លេដោយមិនរំខានការបូជា'],
+      photos: 'ដំបូល និងទីធ្លាជាចំណុចថតល្អ។ សុំការអនុញ្ញាតមុនថតមនុស្ស ឬពិធីសាសនា។', tips: 'ស្លៀកពាក់សមរម្យ និយាយស្រាលៗ និងដោះស្បែកជើងតាមការណែនាំ។', stay: 'ការស្នាក់នៅមាត់ទន្លេងាយស្រួលសម្រាប់ដំណើរទស្សនាកណ្តាលទីក្រុង។',
+    },
+    'independence-monument': {
+      name: 'វិមានឯករាជ្យ', type: 'វិមានអនុស្សាវរីយ៍ជាតិបែបស្ថាបត្យកម្មខ្មែរ', hours: 'អាចមើលពីផ្លូវថ្មើរជើងសាធារណៈ; ពេលមានពិធីអាចរឹតត្បិត', price: 'មើលពីចិញ្ចើមផ្លូវមិនចាំបាច់ទិញសំបុត្រ', duration: '២០–៤០ នាទី',
+      manager: 'វិមានឯករាជ្យស្ថិតក្នុងរង្វង់មូលធំ ហើយការរៀបចំពិធីជាតិ និងការចូលទៅជិតអាស្រ័យលើអាជ្ញាធរក្រុង និងជាតិ។',
+      history: 'វិមានបញ្ចប់ការសាងសង់ក្នុងឆ្នាំ ១៩៥៨ ដើម្បីរំលឹកឯករាជ្យកម្ពុជាពីបារាំងនៅឆ្នាំ ១៩៥៣ និងជាទីកន្លែងពិធីរំលឹកជាតិ។',
+      architecture: 'ស្ថាបត្យករ វណ្ណ ម៉ូលីវណ្ណ រចនាប៉មមានរាងដូចផ្កាឈូក និងលំនាំនាគជាន់ៗ ដែលយកគំនិតពីស្ថាបត្យកម្មខ្មែរ។',
+      experience: 'មើលទិដ្ឋភាពទាំងមូលពីចិញ្ចើមផ្លូវដែលមានសុវត្ថិភាព។ ភ្លើងពេលយប់បង្ហាញរូបរាងវិមានយ៉ាងស្អាត។ កុំចូលរង្វង់មូលដែលមានរថយន្ត។',
+      route: ['មកពីចិញ្ចើមផ្លូវមហាវិថីព្រះនរោត្តម', 'រកទីតាំងមានសុវត្ថិភាពមើលវិមាន', 'សង្កេតលំនាំស្ថាបត្យកម្មខ្មែរ', 'បន្តទៅសួនក្បែរៗ ឬជិះយានជំនិះត្រឡប់'],
+      photos: 'ថតរូបរាងវិមានពេលល្ងាចពីចិញ្ចើមផ្លូវ និងកុំចូលផ្លូវរថយន្តដើម្បីថត។', tips: 'ចរាចរណ៍ជុំវិញមមាញឹក សូមឆ្លងតាមកន្លែងអនុញ្ញាត។', stay: 'កន្លែងស្នាក់នៅកណ្តាលក្រុងងាយស្រួលរៀបចំដំណើរទស្សនាវិមាន។',
+    },
     'wat-phnom': {
       name: 'វត្តភ្នំ', type: 'វត្តព្រះពុទ្ធសាសនាប្រវត្តិសាស្ត្រលើភ្នំតូច', hours: 'គួរទស្សនាពេលថ្ងៃ; ពិនិត្យម៉ោងប្រកាសនៅវត្ត', price: 'ភ្ញៀវបរទេសអាចត្រូវបង់ថ្លៃចូលតិចតួច; ពិនិត្យនៅច្រក', duration: '៤៥–៧៥ នាទី',
       manager: 'វត្តភ្នំជាទីកន្លែងសាសនាព្រះពុទ្ធដែលកំពុងប្រើប្រាស់។ សហគមន៍វត្តថែរក្សាកន្លែងបូជា ខណៈភ្នំ និងផ្លូវសាធារណៈជាផ្នែកមួយនៃទេសភាពទីក្រុង។ សូមគោរពការណែនាំរបស់បុគ្គលិកវត្ត និងអាជ្ញាធរមូលដ្ឋាន។',
@@ -107,7 +197,7 @@ export const nearbyTranslations: Record<string, Record<string, any>> = {
 
 export const nearbyCopy: Record<string, any> = {
   en: {
-    subtitle: 'A detailed independent guide to a Phnom Penh landmark near the riverside night market.', management: 'About the place and its management',
+    subtitle: 'Explore the history, architecture and practical visiting tips for this Phnom Penh landmark.', management: 'About the place and its management',
     essentials: 'Basic information', hours: 'Opening hours', admission: 'Tickets and fees', access: 'Getting there', history: 'History', architecture: 'Architecture and observation points',
     experience: 'Core experience', itinerary: 'Suggested walking route', tips: 'Visitor guidelines', photography: 'Photo spots', accommodation: 'Nearby accommodation', reviews: 'Visitor reviews',
     reviewsText: 'Read current visitor feedback on this attraction’s own Google Maps listing. No rating is reproduced without a dated, place-specific snapshot.',
@@ -117,7 +207,7 @@ export const nearbyCopy: Record<string, any> = {
     maps: 'Open this exact attraction on Google Maps', back: 'More nearby attractions', source: 'Reference for historical and visitor facts', spot: 'On-site photography is recommended; the night-market gallery is not reused as a photo of a different landmark.',
   },
   zh: {
-    subtitle: '金边河滨夜市周边独立景点深度介绍与游览建议。', management: '关于景点及管理主体', essentials: '基本信息', hours: '开放时间', admission: '门票价格', access: '交通方式', history: '历史背景', architecture: '建筑特色与观察重点',
+    subtitle: '从金边夜市出发，认识这座城市的历史建筑、文化与游览看点。', management: '关于景点及管理主体', essentials: '基本信息', hours: '开放时间', admission: '门票价格', access: '交通方式', history: '历史背景', architecture: '建筑特色与观察重点',
     experience: '核心体验', itinerary: '推荐步行路线', tips: '游览须知', photography: '拍照机位', accommodation: '周边住宿建议', reviews: '游客评价',
     reviewsText: '请在此景点专属 Google 地图地点查看实时游客评价。由于缺少带同步日期的独立评分数据，页面不显示可能误导的数字。',
     accessText: '请使用下方景点专属名称地图导航。市中心部分路段可以从金边夜市步行到达，但应留意路口、炎热天气及夜间交通。',

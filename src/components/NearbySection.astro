@@ -31,13 +31,16 @@ const guideLabel = lang === 'zh' ? '继续探索周边与夜游指南' : lang ==
     }
   </div>
   <div class="mt-8">
-    <h3 class="text-xl font-bold text-gray-900">{lang === 'zh' ? '周边独立景点专页' : lang === 'km' ? 'ទំព័រទីតាំងទេសចរណ៍ក្បែរៗ' : 'Individual nearby attraction guides'}</h3>
+    <h3 class="text-xl font-bold text-gray-900">{lang === 'zh' ? '探索金边更多精彩地点' : lang === 'km' ? 'ស្វែងយល់ពីទីកន្លែងផ្សេងទៀតនៅភ្នំពេញ' : 'Discover more places in Phnom Penh'}</h3>
     <div class="mt-4 grid gap-4 md:grid-cols-3">
       {nearbySlugs.map((slug) => (
-        <a class="group rounded-2xl border border-teal-100 bg-white p-5 shadow-sm hover:border-teal-300 hover:shadow-md" href={`${prefix}nearby/${slug}/`}>
+        <a class="group overflow-hidden rounded-2xl border border-teal-100 bg-white shadow-sm hover:border-teal-300 hover:shadow-md" href={`${prefix}nearby/${slug}/`}>
+          <img src={`/nearby/${slug}-1.jpg`} alt={nearbyTranslations[lang]?.[slug]?.name ?? nearbyPlaces[slug].name} class="h-40 w-full object-cover" width="640" height="400" loading="lazy" decoding="async" />
+          <div class="p-5">
           <h4 class="font-bold text-gray-900 group-hover:text-teal-700">{nearbyTranslations[lang]?.[slug]?.name ?? nearbyPlaces[slug].name}</h4>
           <p class="mt-2 text-sm text-gray-600">{nearbyTranslations[lang]?.[slug]?.type ?? nearbyPlaces[slug].type}</p>
           <span class="mt-4 inline-block text-sm font-semibold text-teal-700">{lang === 'zh' ? '阅读完整景点指南' : lang === 'km' ? 'អានមគ្គុទ្ទេសក៍លម្អិត' : 'Read the full visitor guide'} →</span>
+          </div>
         </a>
       ))}
     </div>
