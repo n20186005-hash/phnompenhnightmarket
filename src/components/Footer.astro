@@ -1,113 +1,37 @@
 ---
-import { getLangFromUrl, getI18n, langOrder } from '../i18n/ui';
-import { languages } from '../i18n/ui';
-import { attraction } from '../config/site';
+import { getLangFromUrl, getI18n } from '../i18n/ui';
 
 const lang = getLangFromUrl(Astro.url);
 const { messages } = getI18n(Astro.url);
 const f = messages.footer;
 
 const year = new Date().getFullYear();
-const rights = f.rights.replace('{year}', String(year));
-
-const navItems = [
-  { key: 'overview', href: '#overview' },
-  { key: 'history', href: '#culture' },
-  { key: 'food', href: '#food' },
-  { key: 'shopping', href: '#shopping' },
-  { key: 'location', href: '#location' },
-  { key: 'weather', href: '#weather' },
-  { key: 'faq', href: '#faq' },
-];
+const rights = `© ${year} ${f.siteName} · ${lang === 'zh' ? '版權所有' : lang === 'km' ? 'រក្សាសិទ្ធិគ្រប់យ៉ាង' : 'All rights reserved'}`;
+const independence = lang === 'zh'
+  ? '本网站是一个独立的旅游信息项目。我们与任何政府机构或官方组织均无关联。'
+  : lang === 'km'
+    ? 'គេហទំព័រនេះជាគម្រោងព័ត៌មានទេសចរណ៍ឯករាជ្យ។ យើងមិនមានទំនាក់ទំនងជាមួយស្ថាប័នរដ្ឋាភិបាល ឬអង្គការផ្លូវការណាមួយឡើយ។'
+    : 'This website is an independent travel information project. We are not affiliated with any government agency or official organization.';
 
 const langHrefs: Record<string, string> = {
   km: '/',
   en: '/en/',
   zh: '/zh/',
 };
-const isHome = Astro.url.pathname === langHrefs[lang] || Astro.url.pathname === langHrefs[lang].slice(0, -1);
 ---
 
 <footer class="mt-8 bg-teal-950 text-teal-50">
-  <div class="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:grid-cols-2 lg:grid-cols-4">
-    <div class="lg:col-span-2">
-      <div class="flex items-center gap-2 font-bold text-white">
-        <span class="grid h-8 w-8 place-items-center rounded-lg bg-amber-500 text-teal-950">🌙</span>
-        <span>{f.siteName}</span>
-      </div>
-      <p class="mt-4 max-w-md text-sm text-teal-100/80">{f.tagline}</p>
-      {f.multilingual && <p class="mt-3 max-w-md text-xs text-teal-200/70">{f.multilingual}</p>}
-      <a
-        href={attraction.mapsUrl}
-        target="_blank"
-        rel="noopener"
-        class="mt-5 inline-flex items-center gap-2 rounded-full bg-amber-500 px-4 py-2 text-sm font-semibold text-teal-950 transition hover:bg-amber-400"
-      >
-        🗺️ {f.links.maps}
-      </a>
-      {f.ratingNote && <p class="mt-3 max-w-md text-xs text-teal-200/70">{f.ratingNote}</p>}
+  <div class="mx-auto flex max-w-6xl flex-col gap-5 px-4 py-8 md:flex-row md:items-start md:justify-between">
+    <div class="text-sm text-teal-100/80">
+      <p>{rights}</p>
+      <p class="mt-2 max-w-xl">{independence}</p>
     </div>
-
-    <div>
-      <h3 class="text-sm font-semibold uppercase tracking-wide text-teal-200">{f.navTitle}</h3>
-      <ul class="mt-4 space-y-2 text-sm">
-        {
-          navItems.map((item) => (
-            <li>
-              <a href={isHome ? item.href : `${langHrefs[lang]}${item.href}`} class="text-teal-100/80 transition hover:text-white">
-                {messages.header.nav[item.key]}
-              </a>
-            </li>
-          ))
-        }
-        <li><a href={`${langHrefs[lang]}riverside/`} class="text-teal-100/80 transition hover:text-white">{lang === 'zh' ? '河滨位置与周边' : lang === 'km' ? 'មាត់ទន្លេ និងក្បែរៗ' : 'Riverside & nearby'}</a></li>
-        <li><a href={`${langHrefs[lang]}shopping/`} class="text-teal-100/80 transition hover:text-white">{lang === 'zh' ? '购物指南' : lang === 'km' ? 'ទិញទំនិញ' : 'Shopping guide'}</a></li>
-        <li><a href={`${langHrefs[lang]}evening-itinerary/`} class="text-teal-100/80 transition hover:text-white">{lang === 'zh' ? '两小时夜游路线' : lang === 'km' ? 'ផែនការពេលល្ងាច' : 'Evening itinerary'}</a></li>
-      </ul>
-    </div>
-
-    <div>
-      <h3 class="text-sm font-semibold uppercase tracking-wide text-teal-200">{f.langTitle}</h3>
-      <ul class="mt-4 space-y-2 text-sm">
-        {
-          langOrder.map((l) => (
-            <li>
-              <a href={langHrefs[l]} hreflang={l} class="text-teal-100/80 transition hover:text-white">
-                {languages[l]}
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-    </div>
-
-    <div>
-      <h3 class="text-sm font-semibold uppercase tracking-wide text-teal-200">{f.legalTitle}</h3>
-      <ul class="mt-4 space-y-2 text-sm">
+    <nav aria-label={f.legalTitle} class="md:text-right">
+      <ul class="flex flex-wrap gap-x-5 gap-y-2 text-sm md:justify-end">
         <li><a href={`${langHrefs[lang]}privacy-policy/`} class="text-teal-100/80 transition hover:text-white">{f.privacy}</a></li>
         <li><a href={`${langHrefs[lang]}terms-of-service/`} class="text-teal-100/80 transition hover:text-white">{f.terms}</a></li>
         <li><a href={`${langHrefs[lang]}cookie-settings/`} class="text-teal-100/80 transition hover:text-white">{f.cookies}</a></li>
       </ul>
-    </div>
-  </div>
-
-  <div class="border-t border-white/10">
-    <div class="mx-auto max-w-6xl px-4 py-6 text-xs text-teal-100/70">
-      <p>{f.disclaimer}</p>
-      <p class="mt-3">{f.nonProfit}</p>
-      <p class="mt-3">
-        {f.tourismNote}{' '}
-        <a
-          href="https://www.tourismcambodia.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="text-amber-300 underline underline-offset-2 transition hover:text-amber-200"
-        >
-          {f.tourismLink}
-        </a>
-      </p>
-      <p class="mt-3">{f.imageCredit}</p>
-      <p class="mt-3">{rights}</p>
-    </div>
+    </nav>
   </div>
 </footer>

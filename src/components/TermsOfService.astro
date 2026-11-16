@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getLangFromUrl, getI18n } from '../i18n/ui';
+import { legalExtras } from '../i18n/legalExtras';
 
 const { messages } = getI18n(Astro.url);
 const d = messages.terms;
@@ -16,7 +17,7 @@ const homeHref = lang === 'km' ? '/' : `/${lang}/`;
     </header>
 
     <div class="space-y-8 text-slate-700 leading-relaxed">
-      {d.sections.map((s: { heading: string; content: string }) => (
+      {[...d.sections, ...legalExtras[lang].terms].map((s: { heading: string; content: string }) => (
         <section>
           <h2 class="text-xl font-semibold text-slate-900">{s.heading}</h2>
           <p class="mt-2">{s.content}</p>

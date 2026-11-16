@@ -116,6 +116,13 @@ const jsonLd = {
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
+      window.gtag = gtag;
+      gtag('consent', 'default', {
+        analytics_storage: localStorage.getItem('market-analytics-consent') === 'granted' ? 'granted' : 'denied',
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied'
+      });
       gtag('js', new Date());
       gtag('config', 'G-HXM22WWPKP');
     </script>

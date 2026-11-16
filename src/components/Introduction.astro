@@ -1,7 +1,8 @@
 ---
 import { getI18n } from '../i18n/ui';
-const { messages } = getI18n(Astro.url);
+const { messages, lang } = getI18n(Astro.url);
 const intro = messages.intro;
+const seatingAlt = lang === 'zh' ? '金边夜市露天广场的草席聚餐实景' : lang === 'km' ? 'ភ្ញៀវអង្គុយទទួលទានអាហារលើកន្ទេលនៅផ្សាររាត្រីភ្នំពេញ' : 'Visitors dining on mats in the open-air Phnom Penh Night Market';
 ---
 
 <section id="intro" class="mx-auto max-w-6xl px-4 py-14">
@@ -14,14 +15,8 @@ const intro = messages.intro;
     </div>
 
     <div class="relative grid grid-cols-2 gap-3">
-      <div class="flex aspect-[3/4] flex-col justify-end rounded-2xl bg-gradient-to-br from-teal-700 to-teal-900 p-5 text-white shadow-lg">
-        <span class="text-3xl">🌃</span>
-        <p class="mt-3 text-sm font-medium">📍 Preah Sisowath Quay</p>
-      </div>
-      <div class="mt-8 flex aspect-[3/4] flex-col justify-end rounded-2xl bg-gradient-to-br from-amber-400 to-amber-600 p-5 text-teal-950 shadow-lg">
-        <span class="text-3xl">🛶</span>
-        <p class="mt-3 text-sm font-semibold">🌊 Tonle Sap Riverside</p>
-      </div>
+      <img src="/gallery/phnom-penh-night-market-9.jpg" alt={messages.gallery.alts[8]} width="4080" height="3072" loading="lazy" decoding="async" class="aspect-[3/4] w-full rounded-2xl object-cover shadow-lg" />
+      <img src="/gallery/phnom-penh-night-market-10.jpg" alt={seatingAlt} width="4624" height="3472" loading="lazy" decoding="async" class="mt-8 aspect-[3/4] w-full rounded-2xl object-cover shadow-lg" />
     </div>
   </div>
 </section>
