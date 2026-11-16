@@ -1,0 +1,11 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import NearbyPlacePage from '../../../components/NearbyPlacePage.astro';
+import { nearbyPlaces, nearbySlugs, nearbyTranslations } from '../../../i18n/nearbyPlaces';
+export function getStaticPaths() { return ['en','zh'].flatMap((lang) => nearbySlugs.map((place) => ({params:{lang,place}}))); }
+const {lang, place} = Astro.params as {lang:string;place:string};
+const p = {...nearbyPlaces[place], ...(nearbyTranslations[lang]?.[place] ?? {})};
+const title = lang === 'zh' ? `${p.name}｜历史建筑、门票交通与游览路线` : `${p.name} – History, Visiting Tips & Map | Phnom Penh`;
+const description = lang === 'zh' ? `了解${p.name}的具体地址、历史背景、建筑特色、开放信息、交通、拍照机位及常见问题。` : `${p.name}: history, architecture, location, suggested route, admission and visitor tips near Phnom Penh Night Market.`;
+---
+<BaseLayout title={title} description={description}><NearbyPlacePage slug={place}/></BaseLayout>

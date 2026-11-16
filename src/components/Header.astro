@@ -21,6 +21,7 @@ const langHrefs: Record<string, string> = {
   en: '/en/',
   zh: '/zh/',
 };
+const isHome = Astro.url.pathname === langHrefs[lang] || Astro.url.pathname === langHrefs[lang].slice(0, -1);
 
 const siteName = messages.header.siteName;
 ---
@@ -36,7 +37,7 @@ const siteName = messages.header.siteName;
       {
         navItems.map((item) => (
           <a
-            href={item.href}
+            href={isHome ? item.href : `${langHrefs[lang]}${item.href}`}
             class="rounded-md px-3 py-2 text-sm font-medium text-gray-700 transition hover:bg-orange-50 hover:text-teal-700"
           >
             {messages.header.nav[item.key]}
@@ -82,7 +83,7 @@ const siteName = messages.header.siteName;
       {
         navItems.map((item) => (
           <a
-            href={item.href}
+            href={isHome ? item.href : `${langHrefs[lang]}${item.href}`}
             class="rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-orange-50 hover:text-teal-700"
           >
             {messages.header.nav[item.key]}

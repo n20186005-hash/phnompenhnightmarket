@@ -2,16 +2,17 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import TopicPage from '../../components/TopicPage.astro';
 import { getI18n } from '../../i18n/ui';
+import { extraGuides, extraGuideSlugs } from '../../i18n/extraGuides';
 
 export function getStaticPaths() {
   const langs = ['en', 'zh'];
-  const topics = ['opening-hours', 'food', 'getting-there'];
+  const topics = ['opening-hours', 'food', 'getting-there', ...extraGuideSlugs];
   return langs.flatMap((lang) => topics.map((topic) => ({ params: { lang, topic } })));
 }
 
 const { topic } = Astro.params as { lang: string; topic: string };
-const { messages } = getI18n(Astro.url);
-const tp = messages.topics[topic];
+const { lang, messages } = getI18n(Astro.url);
+const tp = messages.topics[topic] ?? extraGuides[lang]?.[topic];
 ---
 
 <BaseLayout title={tp.meta.title} description={tp.meta.description}>

@@ -1,0 +1,137 @@
+export const nearbySlugs = ['wat-phnom', 'royal-palace', 'central-market'] as const;
+
+const places = {
+  'wat-phnom': {
+    name: 'Wat Phnom Daun Penh', type: 'Historic Buddhist temple and wooded hill', address: 'Wat Phnom Road, Daun Penh, Phnom Penh, Cambodia',
+    map: 'https://www.google.com/maps/search/?api=1&query=Wat+Phnom+Daun+Penh+Phnom+Penh+Cambodia',
+    hours: 'Daytime visits; check the posted temple hours', price: 'A modest visitor admission may apply; check at the entrance', duration: '45–75 minutes',
+    manager: 'Wat Phnom is a functioning Buddhist religious site. Its worship spaces are cared for through the temple community, while the surrounding public hill and approaches form part of Phnom Penh’s civic landscape. Respect the instructions of temple staff and local authorities; this guide is not the site operator.',
+    history: 'Wat Phnom is linked with the legend of Lady Penh and the origins of the city’s name. The hill rises roughly 27 metres above the surrounding flat streets. Its religious role and founding stories make it an orientation point for understanding Phnom Penh.',
+    architecture: 'Notice the ceremonial stair approaches, naga balustrades, sanctuary rooflines, stupa and mature shade trees. The small elevated setting contrasts with the low-lying urban blocks around the river.',
+    experience: 'Walk slowly uphill, observe the temple exterior and devotional areas, and pause at the shaded paths. Worshippers take priority inside religious spaces.',
+    route: ['Find the hill entrance and any ticket notice', 'Ascend the main stairway carefully', 'Observe the temple and stupa without interrupting worship', 'Return through the shaded lower paths'],
+    photos: 'The stairway with naga figures, roof details from a respectful distance, the stupa and trees framing the hill are good subjects. Ask before photographing worshippers.',
+    tips: 'Dress modestly, remove shoes where instructed, protect bags around crowds and avoid feeding wildlife.', stay: 'Riverside hotels offer access to both the hill and the night market; check walking conditions after dark.',
+    source: 'https://tourismcambodia.org/provinces/search/detail/126/wat-phnom-phnom-penh',
+  },
+  'royal-palace': {
+    name: 'Royal Palace of Cambodia', type: 'Working royal residence and ceremonial complex', address: 'Samdach Sothearos Boulevard (Street 3), Phnom Penh, Cambodia',
+    map: 'https://www.google.com/maps/search/?api=1&query=Royal+Palace+Phnom+Penh+Cambodia',
+    hours: 'Visitor access varies; official ceremonies can close areas at short notice', price: 'Ticket required for visitor areas; verify the current tariff at the entrance', duration: '1–2 hours',
+    manager: 'The Royal Palace is a working royal compound used for state and ceremonial functions. Access to publicly visitable areas is controlled by palace authorities, not by the riverside night market or this independent visitor guide. Follow security, dress and photography instructions at the gate.',
+    history: 'The palace complex developed after King Norodom moved the royal capital to Phnom Penh in the 1860s. It remains an important expression of Cambodia’s monarchy and ceremonial traditions.',
+    architecture: 'Look for layered Khmer-style roofs, gilded ornament, formal courtyards and the distinctive ceremonial halls. The Silver Pagoda precinct holds religious and cultural significance; entry to individual structures may be restricted.',
+    experience: 'Approach from the visitor entrance on Sothearos Boulevard, check which halls are open, then explore permitted courtyards at an unhurried pace.',
+    route: ['Check the visitor entrance and dress requirements', 'Walk the accessible ceremonial courtyards', 'Observe rooflines and permitted hall exteriors', 'Visit the accessible pagoda precinct if open'],
+    photos: 'Use the public riverside for broad exterior views and permitted courtyard vantage points inside. Some interiors prohibit photography; obey signs.',
+    tips: 'Cover shoulders and knees, allow time for security screening, and avoid planning a tight visit on ceremonial days.', stay: 'Accommodation between the riverside and central city is useful for daytime palace visits and a separate weekend market evening.',
+    source: 'https://tourismcambodia.org/provinces/search/detail/127/royal-palace-1548301051',
+  },
+  'central-market': {
+    name: 'Central Market (Phsar Thmei)', type: 'Historic Art Deco covered market', address: 'Street 128, Phsar Thmei, Daun Penh, Phnom Penh, Cambodia',
+    map: 'https://www.google.com/maps/search/?api=1&query=Central+Market+Phsar+Thmei+Phnom+Penh+Cambodia',
+    hours: 'Generally morning to early evening; confirm individual stalls on the day', price: 'No general admission charge; purchases are priced by vendors', duration: '60–90 minutes',
+    manager: 'Central Market is an active municipal commercial marketplace serving traders and shoppers. Day-to-day stall operation and public facilities follow local market administration and city rules; individual traders manage their own merchandise. Follow posted notices in the market.',
+    history: 'Phsar Thmei, meaning New Market, was constructed between 1935 and 1937 during the French colonial period. It became one of Phnom Penh’s most recognisable commercial landmarks.',
+    architecture: 'The yellow Art Deco structure centres on a high dome, with four wings radiating into covered trading aisles. Look upward to see the geometry and ventilation of the roof, then compare the open perimeter stalls.',
+    experience: 'Circle the outside first to appreciate the dome, then enter one wing, visit the central hall and browse other aisles. Merchandise varies by section.',
+    route: ['Photograph the exterior dome from a safe pavement', 'Enter a covered wing and study the curved roof', 'Reach the central dome and examine the intersecting aisles', 'Browse food and merchandise sections before exiting'],
+    photos: 'Exterior dome panorama, repeated archways, natural light inside the central hall and market-detail photos with vendor permission.',
+    tips: 'Visit in daylight, ask prices before buying and keep pedestrian aisles clear. This is a different market from the weekend Phnom Penh Night Market.', stay: 'Central-city accommodation supports both morning shopping here and an evening visit to the riverfront.',
+    source: 'https://www.tourismcambodia.com/travelguides/provinces/phnom-penh/what-to-see/25_central.htm',
+  },
+};
+
+export const nearbyPlaces: Record<string, any> = places;
+
+export const nearbyTranslations: Record<string, Record<string, any>> = {
+  zh: {
+    'wat-phnom': {
+      name: '塔山寺（Wat Phnom）', type: '历史佛教寺庙与林木山丘', hours: '适合白天参观；以寺庙现场公告时间为准', price: '外国游客可能需要支付少量入场费，金额以入口公告为准', duration: '45–75 分钟',
+      manager: '塔山寺是一处持续使用的佛教宗教场所，宗教空间由寺庙社群照料，外围山丘与公共通道也属于金边城市景观的一部分。参观时应遵循寺方工作人员与当地主管部门的指引。',
+      history: '塔山寺与奔夫人（Lady Penh）的建城传说密切相关，金边的城市名称也与这座山丘有关。山丘高出周围平坦街区约 27 米，是了解金边起源的重要地标。',
+      architecture: '观察入口的纳迦蛇形栏杆、台阶、佛寺的层叠屋顶、佛塔与高大遮荫树木。这种较高的宗教空间与周围平坦的城市街区形成鲜明对比。',
+      experience: '沿阶梯缓慢登高，参观寺庙外观及适合游客进入的区域，再于林荫步道停留。礼佛者应享有优先的安静空间。',
+      route: ['找到山丘入口并查看门票公告', '沿主阶梯缓慢上行', '观赏寺庙与佛塔，避免干扰礼佛活动', '沿下方林荫道路返回'],
+      photos: '推荐从台阶拍摄纳迦扶手、远距离取景寺庙屋顶、佛塔与林木。拍摄礼佛者前应先征求同意。', tips: '穿着得体，在指定位置脱鞋，人多时看管好行李，不喂食野生动物。', stay: '河滨住宿便于前往山丘与夜市，夜间步行前请核对路线与照明。',
+    },
+    'royal-palace': {
+      name: '柬埔寨金边王宫', type: '王室居所与国家礼仪建筑群', hours: '开放区域与时间可能因官方典礼临时调整', price: '游客区域通常需要门票；以入口当日票价为准', duration: '1–2 小时',
+      manager: '王宫是现行王室居住与举行国家典礼的场所，游客可进入的范围由王宫管理机构决定，不属于夜市或本指南的管理范围。请遵守入口安检、服装与摄影规则。',
+      history: '19 世纪 60 年代，诺罗敦国王将王都迁往金边后，这片王宫建筑群逐步发展。其建筑与仪式延续了柬埔寨君主制和国家礼仪传统。',
+      architecture: '留意高棉风格的层叠屋顶、金色装饰、整齐庭院与典礼厅。银阁寺区域具有重要宗教文化意义，不同建筑的内部开放规则可能有所不同。',
+      experience: '从 Sothearos Boulevard 的游客入口进入，先确认当天开放的建筑，再缓慢游览允许进入的庭院与外观。',
+      route: ['找到游客入口并确认服装要求', '沿对游客开放的礼仪庭院步行', '观察屋顶与开放建筑的外观', '如开放，可继续参观银阁寺区域'],
+      photos: '河滨公共区域适合拍摄王宫外观；进入庭院后仅在允许摄影的位置取景。部分室内空间禁止拍照。', tips: '遮住肩膀与膝盖，预留安检时间，遇到典礼日避免安排过紧行程。', stay: '河滨至市中心的住宿方便白天参观王宫，晚上再去周末夜市。',
+    },
+    'central-market': {
+      name: '金边中央市场（Phsar Thmei）', type: '装饰艺术风格的历史室内市场', hours: '通常从上午营业至傍晚，各摊位可能不同', price: '一般无需门票，购买商品另行付款', duration: '60–90 分钟',
+      manager: '中央市场是持续营业的城市商业市场，摊位管理与公共设施遵循当地市场管理安排和市政规定；独立商家自行经营商品。参观时请遵循市场公告。',
+      history: '中央市场的高棉文名称意为“新市场”，建于 1935 至 1937 年的法国殖民时期，后来成为金边最有代表性的商业地标之一。',
+      architecture: '黄色装饰艺术（Art Deco）风格建筑以高大的中央圆顶为核心，四条市场走廊向外辐射。可观察屋顶的几何线条、通风设计及外围摊位布局。',
+      experience: '先从外围欣赏圆顶，再由其中一条廊道进入中央大厅，接着探索其他走廊及商品区。不同区域出售的商品不同。',
+      route: ['从安全的人行道拍摄外部圆顶', '从一条有顶廊道进入并观察曲线屋顶', '走至中央圆顶欣赏交叉通道', '浏览其他商品与食物区域后离开'],
+      photos: '可以拍摄外部圆顶全景、连续拱廊、中央大厅自然光及商品细节；近距离拍摄商家前应先征得同意。', tips: '建议白天前往，购买前询价，不阻塞通道。中央市场与周末营业的金边河滨夜市是两个独立地点。', stay: '市中心住宿便于白天逛中央市场，晚上另行前往河滨。',
+    },
+  },
+  km: {
+    'wat-phnom': {
+      name: 'វត្តភ្នំ', type: 'វត្តព្រះពុទ្ធសាសនាប្រវត្តិសាស្ត្រលើភ្នំតូច', hours: 'គួរទស្សនាពេលថ្ងៃ; ពិនិត្យម៉ោងប្រកាសនៅវត្ត', price: 'ភ្ញៀវបរទេសអាចត្រូវបង់ថ្លៃចូលតិចតួច; ពិនិត្យនៅច្រក', duration: '៤៥–៧៥ នាទី',
+      manager: 'វត្តភ្នំជាទីកន្លែងសាសនាព្រះពុទ្ធដែលកំពុងប្រើប្រាស់។ សហគមន៍វត្តថែរក្សាកន្លែងបូជា ខណៈភ្នំ និងផ្លូវសាធារណៈជាផ្នែកមួយនៃទេសភាពទីក្រុង។ សូមគោរពការណែនាំរបស់បុគ្គលិកវត្ត និងអាជ្ញាធរមូលដ្ឋាន។',
+      history: 'វត្តភ្នំភ្ជាប់នឹងរឿងព្រេងដូនពេញ និងប្រភពឈ្មោះរាជធានីភ្នំពេញ។ ភ្នំមានកម្ពស់ប្រហែល ២៧ ម៉ែត្រ លេចធ្លោលើផ្លូវរាបស្មើជុំវិញ ហើយជាសញ្ញាសម្គាល់ប្រវត្តិសាស្ត្រសំខាន់។',
+      architecture: 'សង្កេតជណ្តើរ និងបង្កាន់ដៃនាគ ដំបូលវិហារ ចេតិយ និងដើមឈើធំៗ។ ទីធ្លាសាសនាខ្ពស់ជាងអគារនៅជុំវិញ។',
+      experience: 'ឡើងជណ្តើរយឺតៗ មើលផ្នែកខាងក្រៅនៃវិហារ និងទីធ្លាដែលអនុញ្ញាតឱ្យចូល រួចសម្រាកតាមផ្លូវមានម្លប់។ សូមកុំរំខានអ្នកបន់ស្រន់។',
+      route: ['រកច្រកចូល និងពិនិត្យសំបុត្រ', 'ឡើងតាមជណ្តើរមេដោយប្រុងប្រយ័ត្ន', 'ទស្សនាវិហារ និងចេតិយដោយមិនរំខានការបូជា', 'ត្រឡប់តាមផ្លូវមានម្លប់'],
+      photos: 'ជណ្តើរនាគ ដំបូលវិហារ ចេតិយ និងដើមឈើជាចំណុចថតល្អ។ សុំការអនុញ្ញាតមុនថតអ្នកបូជា។', tips: 'ស្លៀកពាក់សមរម្យ ដោះស្បែកជើងនៅកន្លែងកំណត់ និងមិនផ្តល់អាហារដល់សត្វព្រៃ។', stay: 'សណ្ឋាគារមាត់ទន្លេងាយស្រួលទៅវត្ត និងផ្សាររាត្រី; សូមពិនិត្យផ្លូវពេលយប់។',
+    },
+    'royal-palace': {
+      name: 'ព្រះបរមរាជវាំងកម្ពុជា', type: 'ព្រះរាជដំណាក់ និងបរិវេណពិធីជាតិ', hours: 'ការចូលទស្សនាអាចផ្លាស់ប្តូរពេលមានព្រះរាជពិធី', price: 'តំបន់ទេសចរណ៍ត្រូវការសំបុត្រ; ពិនិត្យតម្លៃនៅច្រក', duration: '១–២ ម៉ោង',
+      manager: 'ព្រះបរមរាជវាំងជាព្រះរាជដំណាក់ និងទីកន្លែងពិធីជាតិ។ អាជ្ញាធរព្រះបរមរាជវាំងគ្រប់គ្រងតំបន់ដែលភ្ញៀវអាចចូលបាន។ សូមគោរពការត្រួតពិនិត្យសន្តិសុខ សម្លៀកបំពាក់ និងច្បាប់ថតរូប។',
+      history: 'ក្រោយព្រះបាទនរោត្តមផ្លាស់រាជធានីមកភ្នំពេញក្នុងទសវត្សរ៍ ១៨៦០ បរិវេណព្រះបរមរាជវាំងត្រូវបានអភិវឌ្ឍជាបន្តបន្ទាប់។ វាជានិមិត្តរូបនៃរាជានិយម និងពិធីប្រពៃណីកម្ពុជា។',
+      architecture: 'មើលដំបូលខ្មែរជាន់ៗ គ្រឿងលម្អពណ៌មាស ទីធ្លាពិធី និងសាលរាជការ។ តំបន់វត្តព្រះកែវមរកតមានតម្លៃសាសនា ហើយអគារខ្លះអាចមានការរឹតត្បិត។',
+      experience: 'ចូលតាមច្រកភ្ញៀវនៅមហាវិថីសុធារស ពិនិត្យតំបន់បើកនៅថ្ងៃនោះ ហើយដើរមើលទីធ្លាដែលអនុញ្ញាត។',
+      route: ['ពិនិត្យច្រកភ្ញៀវ និងសម្លៀកបំពាក់', 'ដើរតាមទីធ្លាពិធីដែលបើក', 'មើលដំបូល និងសាលខាងក្រៅ', 'ទស្សនាតំបន់វត្តព្រះកែវមរកតបើបើក'],
+      photos: 'អាចថតទិដ្ឋភាពខាងក្រៅពីមាត់ទន្លេ និងទីធ្លាដែលអនុញ្ញាត។ កន្លែងខាងក្នុងខ្លះហាមថតរូប។', tips: 'គ្របស្មា និងជង្គង់ ទុកពេលសម្រាប់សន្តិសុខ និងគិតគូរព្រះរាជពិធី។', stay: 'ស្នាក់នៅតំបន់មាត់ទន្លេងាយស្រួលទស្សនាព្រះបរមរាជវាំងពេលថ្ងៃ និងផ្សាររាត្រីចុងសប្តាហ៍។',
+    },
+    'central-market': {
+      name: 'ផ្សារធំថ្មី (Central Market)', type: 'ផ្សារប្រវត្តិសាស្ត្ររចនាបថ Art Deco', hours: 'ជាទូទៅបើកពីព្រឹកដល់ល្ងាច; តូបនីមួយៗអាចខុសគ្នា', price: 'មិនមានសំបុត្រចូលទូទៅ; ទិញទំនិញបង់ប្រាក់', duration: '៦០–៩០ នាទី',
+      manager: 'ផ្សារធំថ្មីជាផ្សារពាណិជ្ជកម្មដែលកំពុងដំណើរការ។ ការគ្រប់គ្រងតូប និងសេវាសាធារណៈអនុវត្តតាមរដ្ឋបាលផ្សារ និងបទបញ្ជាក្រុង ខណៈអ្នកលក់គ្រប់គ្រងទំនិញផ្ទាល់ខ្លួន។',
+      history: 'ផ្សារធំថ្មីមានន័យថា New Market ហើយត្រូវបានសាងសង់ចន្លោះឆ្នាំ ១៩៣៥–១៩៣៧ ក្នុងសម័យអាណានិគមបារាំង។ វាក្លាយជាសញ្ញាសម្គាល់ពាណិជ្ជកម្មល្បីរបស់ភ្នំពេញ។',
+      architecture: 'អគារពណ៌លឿងបែប Art Deco មានដំបូលមូលធំនៅកណ្តាល និងស្លាបផ្សារបួនទិស។ សង្កេតរាងធរណីមាត្រ ខ្យល់ចេញចូល និងតូបនៅជុំវិញ។',
+      experience: 'ដើរមើលដំបូលមូលពីខាងក្រៅសិន រួចចូលតាមស្លាបមួយទៅសាលកណ្តាល និងមើលតូបផ្សេងៗ។',
+      route: ['ថតដំបូលមូលពីចិញ្ចើមផ្លូវដែលមានសុវត្ថិភាព', 'ចូលតាមផ្លូវមានដំបូល និងមើលរចនាសម្ព័ន្ធ', 'ទៅសាលកណ្តាលមើលច្រកផ្លូវប្រសព្វ', 'មើលតូបអាហារ និងទំនិញមុនចេញ'],
+      photos: 'ដំបូលមូលខាងក្រៅ ជួរធ្នូ ពន្លឺក្នុងសាលកណ្តាល និងទំនិញជាចំណុចថតល្អ។ សុំការអនុញ្ញាតមុនថតអ្នកលក់ជិតៗ។', tips: 'ទៅពេលថ្ងៃ សួរតម្លៃមុនទិញ និងកុំរាំងផ្លូវដើរ។ ផ្សារនេះខុសពីផ្សាររាត្រីមាត់ទន្លេ។', stay: 'កន្លែងស្នាក់នៅកណ្តាលក្រុងងាយស្រួលទិញទំនិញពេលថ្ងៃ និងទៅមាត់ទន្លេពេលល្ងាច។',
+    },
+  },
+};
+
+export const nearbyCopy: Record<string, any> = {
+  en: {
+    subtitle: 'A detailed independent guide to a Phnom Penh landmark near the riverside night market.', management: 'About the place and its management',
+    essentials: 'Basic information', hours: 'Opening hours', admission: 'Tickets and fees', access: 'Getting there', history: 'History', architecture: 'Architecture and observation points',
+    experience: 'Core experience', itinerary: 'Suggested walking route', tips: 'Visitor guidelines', photography: 'Photo spots', accommodation: 'Nearby accommodation', reviews: 'Visitor reviews',
+    reviewsText: 'Read current visitor feedback on this attraction’s own Google Maps listing. No rating is reproduced without a dated, place-specific snapshot.',
+    accessText: 'Use the dedicated place-name map link below. Walking from Phnom Penh Night Market is possible within the central city, but plan for traffic crossings, heat and evening conditions.',
+    faq: 'Frequently asked questions', faqItems: ['How long should I allow?', 'Can I visit this place in the evening?', 'Can I combine this place with Phnom Penh Night Market?'],
+    answers: ['Allow the suggested duration shown in the basic information, plus transport time.', 'Check this location’s own opening and access notices. Night market hours do not apply here.', 'Yes, but visit daytime-only attractions first and leave the market for a Friday–Sunday evening.'],
+    maps: 'Open this exact attraction on Google Maps', back: 'More nearby attractions', source: 'Reference for historical and visitor facts', spot: 'On-site photography is recommended; the night-market gallery is not reused as a photo of a different landmark.',
+  },
+  zh: {
+    subtitle: '金边河滨夜市周边独立景点深度介绍与游览建议。', management: '关于景点及管理主体', essentials: '基本信息', hours: '开放时间', admission: '门票价格', access: '交通方式', history: '历史背景', architecture: '建筑特色与观察重点',
+    experience: '核心体验', itinerary: '推荐步行路线', tips: '游览须知', photography: '拍照机位', accommodation: '周边住宿建议', reviews: '游客评价',
+    reviewsText: '请在此景点专属 Google 地图地点查看实时游客评价。由于缺少带同步日期的独立评分数据，页面不显示可能误导的数字。',
+    accessText: '请使用下方景点专属名称地图导航。市中心部分路段可以从金边夜市步行到达，但应留意路口、炎热天气及夜间交通。',
+    faq: '常见问题', faqItems: ['建议停留多久？', '晚上可以参观吗？', '能与金边夜市安排在同一天吗？'],
+    answers: ['请参考基本信息中的建议停留时间，并预留交通时间。', '请以该景点自己的开放与入场公告为准，不能套用夜市营业时间。', '可以。建议先参观白天开放的景点，再安排周五至周日的夜市。'],
+    maps: '查看此景点专属 Google 地图', back: '更多周边景点', source: '历史及游客资料参考', spot: '建议现场拍摄景点实景；不会把夜市照片当成其他景点的照片。',
+  },
+  km: {
+    subtitle: 'មគ្គុទ្ទេសក៍លម្អិតសម្រាប់កន្លែងទេសចរណ៍នៅជិតផ្សាររាត្រីមាត់ទន្លេភ្នំពេញ។', management: 'អំពីទីតាំង និងការគ្រប់គ្រង', essentials: 'ព័ត៌មានមូលដ្ឋាន', hours: 'ម៉ោងបើក', admission: 'សំបុត្រ និងថ្លៃចូល', access: 'ការធ្វើដំណើរ', history: 'ប្រវត្តិសាស្ត្រ', architecture: 'ស្ថាបត្យកម្ម និងចំណុចសង្កេត',
+    experience: 'បទពិសោធន៍សំខាន់', itinerary: 'ផ្លូវដើរណែនាំ', tips: 'ការណែនាំអ្នកទស្សនា', photography: 'កន្លែងថតរូប', accommodation: 'កន្លែងស្នាក់នៅក្បែរៗ', reviews: 'មតិអ្នកទស្សនា',
+    reviewsText: 'សូមមើលមតិថ្មីៗនៅ Google Maps របស់ទីតាំងនេះដោយផ្ទាល់។ យើងមិនបង្ហាញពិន្ទុដែលគ្មានកាលបរិច្ឆេទ និងចំនួនមតិច្បាស់លាស់ទេ។',
+    accessText: 'សូមប្រើតំណផែនទីដែលមានឈ្មោះទីតាំងផ្ទាល់។ កន្លែងខ្លះអាចដើរពីផ្សាររាត្រីបាន ប៉ុន្តែត្រូវប្រយ័ត្នចរាចរណ៍ និងអាកាសធាតុក្តៅ។',
+    faq: 'សំណួរញឹកញាប់', faqItems: ['គួរចំណាយពេលប៉ុន្មាន?', 'អាចចូលពេលយប់បានទេ?', 'អាចទៅទីនេះ និងផ្សាររាត្រីក្នុងថ្ងៃតែមួយទេ?'],
+    answers: ['សូមមើលពេលវេលាណែនាំក្នុងព័ត៌មានមូលដ្ឋាន និងបន្ថែមពេលធ្វើដំណើរ។', 'សូមពិនិត្យម៉ោង និងសេចក្តីជូនដំណឹងរបស់ទីតាំងនេះផ្ទាល់ មិនមែនម៉ោងផ្សាររាត្រីទេ។', 'បាន។ សូមទៅកន្លែងដែលបើកពេលថ្ងៃជាមុន ហើយទៅផ្សាររាត្រីល្ងាចថ្ងៃសុក្រ ដល់អាទិត្យ។'],
+    maps: 'មើលផែនទី Google Maps របស់ទីតាំងនេះ', back: 'កន្លែងទេសចរណ៍ក្បែរៗ', source: 'ប្រភពព័ត៌មានប្រវត្តិ និងទេសចរណ៍', spot: 'សូមថតរូបទីតាំងពិតផ្ទាល់; រូបផ្សាររាត្រីមិនត្រូវប្រើជារូបកន្លែងផ្សេងទេ។',
+  },
+};

@@ -1,8 +1,17 @@
 ---
 import { getI18n } from '../i18n/ui';
-const { messages } = getI18n(Astro.url);
+import { nearbySlugs, nearbyPlaces, nearbyTranslations } from '../i18n/nearbyPlaces';
+const { messages, lang } = getI18n(Astro.url);
 const n = messages.nearby;
 const accents = ['from-teal-600 to-teal-900', 'from-amber-400 to-amber-600', 'from-teal-700 to-teal-800'];
+const prefix = lang === 'km' ? '/' : `/${lang}/`;
+const maps = [
+  'https://www.google.com/maps/search/?api=1&query=Sisowath+Quay+Riverside+Phnom+Penh+Cambodia',
+  'https://www.google.com/maps/search/?api=1&query=Royal+Palace+Phnom+Penh+Cambodia',
+  'https://www.google.com/maps/search/?api=1&query=Central+Market+Phnom+Penh+Cambodia',
+];
+const mapLabel = lang === 'zh' ? '查看该地点地图' : lang === 'km' ? 'មើលផែនទីទីតាំងនេះ' : 'View this place on Maps';
+const guideLabel = lang === 'zh' ? '继续探索周边与夜游指南' : lang === 'km' ? 'អានមគ្គុទ្ទេសក៍ក្បែរៗ និងពេលល្ងាច' : 'Explore nearby and evening guides';
 ---
 
 <section id="nearby" class="mx-auto max-w-6xl px-4 py-14">
@@ -15,9 +24,30 @@ const accents = ['from-teal-600 to-teal-900', 'from-amber-400 to-amber-600', 'fr
           <div class="p-6">
             <h3 class="font-semibold text-gray-900">{item.title}</h3>
             <p class="mt-2 text-sm text-gray-600">{item.desc}</p>
+            <a href={maps[i]} target="_blank" rel="noopener noreferrer" class="mt-4 inline-block text-sm font-semibold text-teal-700 underline">{mapLabel} ↗</a>
           </div>
         </div>
       ))
     }
+  </div>
+  <div class="mt-8">
+    <h3 class="text-xl font-bold text-gray-900">{lang === 'zh' ? '周边独立景点专页' : lang === 'km' ? 'ទំព័រទីតាំងទេសចរណ៍ក្បែរៗ' : 'Individual nearby attraction guides'}</h3>
+    <div class="mt-4 grid gap-4 md:grid-cols-3">
+      {nearbySlugs.map((slug) => (
+        <a class="group rounded-2xl border border-teal-100 bg-white p-5 shadow-sm hover:border-teal-300 hover:shadow-md" href={`${prefix}nearby/${slug}/`}>
+          <h4 class="font-bold text-gray-900 group-hover:text-teal-700">{nearbyTranslations[lang]?.[slug]?.name ?? nearbyPlaces[slug].name}</h4>
+          <p class="mt-2 text-sm text-gray-600">{nearbyTranslations[lang]?.[slug]?.type ?? nearbyPlaces[slug].type}</p>
+          <span class="mt-4 inline-block text-sm font-semibold text-teal-700">{lang === 'zh' ? '阅读完整景点指南' : lang === 'km' ? 'អានមគ្គុទ្ទេសក៍លម្អិត' : 'Read the full visitor guide'} →</span>
+        </a>
+      ))}
+    </div>
+  </div>
+  <div class="mt-6 rounded-2xl border border-teal-200 bg-teal-50 p-5">
+    <h3 class="font-semibold text-gray-900">{guideLabel}</h3>
+    <div class="mt-3 flex flex-wrap gap-3">
+      <a class="rounded-full bg-white px-4 py-2 text-sm font-semibold text-teal-700 hover:shadow" href={`${prefix}riverside/`}>{lang === 'zh' ? '河滨与周边' : lang === 'km' ? 'មាត់ទន្លេ' : 'Riverside guide'}</a>
+      <a class="rounded-full bg-white px-4 py-2 text-sm font-semibold text-teal-700 hover:shadow" href={`${prefix}shopping/`}>{lang === 'zh' ? '购物指南' : lang === 'km' ? 'ទិញទំនិញ' : 'Shopping guide'}</a>
+      <a class="rounded-full bg-white px-4 py-2 text-sm font-semibold text-teal-700 hover:shadow" href={`${prefix}evening-itinerary/`}>{lang === 'zh' ? '两小时夜游' : lang === 'km' ? 'ដំណើរពេលល្ងាច' : 'Evening route'}</a>
+    </div>
   </div>
 </section>

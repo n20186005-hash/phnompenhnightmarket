@@ -2,9 +2,7 @@
 // falling back to the production domain. Keeps canonical/hreflang/OG metadata
 // consistent across the site and avoids hardcoding a (possibly wrong) domain.
 function resolveBaseUrl(): string {
-  const fromEnv =
-    (typeof process !== 'undefined' && process.env && process.env.CURRENT_SITE_DOMAIN) ||
-    (typeof import.meta !== 'undefined' && (import.meta as any).env && (import.meta as any).env.CURRENT_SITE_DOMAIN);
+  const fromEnv = import.meta.env?.CURRENT_SITE_DOMAIN;
   const raw = (typeof fromEnv === 'string' && fromEnv.length > 0 ? fromEnv : 'phnompenhnightmarket.com')
     .replace(/^https?:\/\//, '')
     .replace(/\/+$/, '');

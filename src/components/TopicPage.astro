@@ -1,6 +1,9 @@
 ---
 import { getLangFromUrl, getI18n, buildAlternates } from '../i18n/ui';
 import { siteConfig } from '../config/site';
+import { extraGuides, extraGuideSlugs } from '../i18n/extraGuides';
+import { attraction } from '../config/site';
+import { guideEnhancements } from '../i18n/guideEnhancements';
 
 interface Props {
   topic: string;
@@ -9,7 +12,7 @@ interface Props {
 const { topic } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const { messages } = getI18n(Astro.url);
-const tp = messages.topics[topic];
+const tp = messages.topics[topic] ?? extraGuides[lang]?.[topic];
 if (!tp) throw new Error(`Unknown topic: ${topic}`);
 
 const langHrefs: Record<string, string> = { km: '/', en: '/en/', zh: '/zh/' };
@@ -17,8 +20,11 @@ const base = langHrefs[lang] ?? '/';
 const alts = buildAlternates(Astro.url.pathname);
 const canonical = alts[lang] ?? alts.km;
 
-const topicsList = ['opening-hours', 'food', 'getting-there'];
+const topicsList = ['opening-hours', 'food', 'getting-there', ...extraGuideSlugs];
 const others = topicsList.filter((t) => t !== topic);
+const guide = guideEnhancements[lang]?.[topic];
+const editorial = guideEnhancements[lang]?.common;
+const photos = guide?.images.map((n: number) => `/gallery/phnom-penh-night-market-${n}.jpg`) ?? [];
 
 const crumbs = [
   { name: messages.topicLinks?.homeLabel ?? messages.header.nav.overview ?? 'Home', url: base },
@@ -68,8 +74,41 @@ const jsonLd = {
     }
   </nav>
 
-  <h1 class="text-3xl font-bold text-gray-900 sm:text-4xl">{tp.meta.title}</h1>
+  {guide && <p class="text-sm font-semibold tracking-wide text-teal-700">{editorial.eyebrow}</p>}
+  <h1 class="mt-2 text-3xl font-bold text-gray-900 sm:text-4xl">{tp.meta.title}</h1>
+  {guide && (
+    <div class="mt-4 flex flex-wrap gap-3 text-sm text-gray-700">
+      <span class="rounded-full bg-amber-50 px-3 py-2">★ {editorial.rating}</span>
+      <span class="rounded-full bg-teal-50 px-3 py-2">{editorial.hours}</span>
+    </div>
+  )}
   <p class="mt-4 text-lg text-gray-600">{tp.intro}</p>
+  {guide && (
+    <>
+      <a class="mt-5 inline-flex rounded-full bg-teal-700 px-5 py-3 font-semibold text-white hover:bg-teal-800" href={attraction.mapsUrl} target="_blank" rel="noopener noreferrer">🗺️ {editorial.map} ↗</a>
+      <figure class="mt-7 overflow-hidden rounded-3xl">
+        <img src={photos[0]} alt={`Phnom Penh Night Market at Sisowath Quay – ${tp.nav}`} class="aspect-[16/8] w-full object-cover" loading="eager" />
+      </figure>
+      <section class="mt-8 rounded-3xl border border-amber-200 bg-amber-50 p-6" aria-label={editorial.about}>
+        <h2 class="text-2xl font-bold text-gray-900">{editorial.about}</h2>
+        <p class="mt-4 leading-8 text-gray-700">{editorial.management}</p>
+        <a href="https://english.cambodiadaily.com/2008/02/01/night-market-adds-new-twist-to-nightlife-but-woes%E2%80%88linger/" class="mt-3 inline-block text-sm text-teal-700 underline" target="_blank" rel="noopener noreferrer">{editorial.source} ↗</a>
+      </section>
+      <section class="mt-9 rounded-3xl bg-gray-50 p-6">
+        <h2 class="text-2xl font-bold text-gray-900">{editorial.basics}</h2>
+        <dl class="mt-4 grid gap-4 sm:grid-cols-2">
+          <div><dt class="font-semibold text-gray-900">{editorial.type}</dt><dd class="mt-1 text-gray-600">{editorial.typeValue}</dd></div>
+          <div><dt class="font-semibold text-gray-900">{editorial.admission}</dt><dd class="mt-1 text-gray-600">{editorial.free}</dd></div>
+          <div><dt class="font-semibold text-gray-900">{editorial.duration}</dt><dd class="mt-1 text-gray-600">{editorial.durationValue}</dd></div>
+          <div><dt class="font-semibold text-gray-900">{lang === 'zh' ? '具体地址' : lang === 'km' ? 'អាសយដ្ឋាន' : 'Street address'}</dt><dd class="mt-1 text-gray-600">{editorial.location}</dd></div>
+        </dl>
+      </section>
+      <section class="mt-9 space-y-7">
+        <div><h2 class="text-2xl font-bold text-gray-900">{editorial.culture}</h2><p class="mt-3 leading-8 text-gray-600">{editorial.cultureText}</p></div>
+        <div><h2 class="text-2xl font-bold text-gray-900">{lang === 'zh' ? '建筑与现场观察重点' : lang === 'km' ? 'រចនាសម្ព័ន្ធ និងចំណុចសង្កេត' : 'Built form and what to observe'}</h2><ul class="mt-3 list-disc space-y-2 pl-6 text-gray-600">{guide.highlights.map((h: string) => <li>{h}</li>)}</ul></div>
+      </section>
+    </>
+  )}
 
   <div class="mt-8 space-y-8">
     {
@@ -88,6 +127,30 @@ const jsonLd = {
       ))
     }
   </div>
+
+  {guide && (
+    <div class="mt-10 space-y-8">
+      <section><h2 class="text-2xl font-bold text-gray-900">{editorial.route}</h2><ol class="mt-4 space-y-3">{editorial.routeSteps.map((step: string, i: number) => <li class="flex gap-4 rounded-2xl bg-teal-50 p-4"><span class="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-teal-700 font-bold text-white">{i + 1}</span><span class="self-center text-gray-700">{step}</span></li>)}</ol></section>
+      <section><h2 class="text-2xl font-bold text-gray-900">{editorial.arrival}</h2><p class="mt-3 leading-8 text-gray-600">{editorial.arrivalText}</p></section>
+      <section><h2 class="text-2xl font-bold text-gray-900">{editorial.etiquette}</h2><p class="mt-3 leading-8 text-gray-600">{editorial.etiquetteText}</p></section>
+      <section><h2 class="text-2xl font-bold text-gray-900">{editorial.photography}</h2><p class="mt-3 leading-8 text-gray-600">{editorial.photographyText}</p></section>
+      <section class="grid gap-4 sm:grid-cols-2">{photos.slice(1).map((photo: string, i: number) => <figure class="overflow-hidden rounded-2xl bg-gray-100"><img src={photo} alt={`${tp.nav} – Phnom Penh Night Market scene ${i + 2}`} class="aspect-[4/3] w-full object-cover" loading="lazy" /></figure>)}</section>
+      <section><h2 class="text-2xl font-bold text-gray-900">{editorial.stay}</h2><p class="mt-3 leading-8 text-gray-600">{editorial.stayText}</p></section>
+      <section><h2 class="text-2xl font-bold text-gray-900">{editorial.reviews}</h2><p class="mt-3 leading-8 text-gray-600">{editorial.reviewsText}</p></section>
+      {topic === 'riverside' && (
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900">{editorial.nearby}</h2>
+          <div class="mt-4 grid gap-3 sm:grid-cols-2">
+            {[
+              { name: lang === 'zh' ? '塔山寺 Wat Phnom' : lang === 'km' ? 'វត្តភ្នំ' : 'Wat Phnom', slug: 'wat-phnom' },
+              { name: lang === 'zh' ? '金边王宫' : lang === 'km' ? 'ព្រះបរមរាជវាំង' : 'Royal Palace', slug: 'royal-palace' },
+              { name: lang === 'zh' ? '中央市场' : lang === 'km' ? 'ផ្សារធំថ្មី' : 'Central Market', slug: 'central-market' },
+            ].map((place) => <a class="rounded-2xl border border-teal-100 p-4 font-semibold text-teal-700 hover:bg-teal-50" href={`${base}nearby/${place.slug}/`}>{place.name} →</a>)}
+          </div>
+        </section>
+      )}
+    </div>
+  )}
 
   <div class="mt-10 rounded-3xl border border-teal-900/10 bg-teal-50 p-6">
     <h2 class="text-2xl font-bold text-gray-900">{tp.faq.title}</h2>
@@ -112,8 +175,8 @@ const jsonLd = {
             href={`${base}${t}/`}
             class="rounded-2xl border border-black/5 bg-white p-4 transition hover:border-teal-300 hover:shadow-sm"
           >
-            <span class="font-semibold text-teal-700">{messages.topics[t].nav}</span>
-            <span class="mt-1 block text-sm text-gray-500">{messages.topics[t].cardDesc}</span>
+            <span class="font-semibold text-teal-700">{(messages.topics[t] ?? extraGuides[lang][t]).nav}</span>
+            <span class="mt-1 block text-sm text-gray-500">{(messages.topics[t] ?? extraGuides[lang][t]).cardDesc}</span>
           </a>
         ))
       }
@@ -126,6 +189,12 @@ const jsonLd = {
       </a>
     </div>
   </div>
+  <p class="mt-8 text-sm text-gray-600">
+    <a class="font-semibold text-teal-700 underline" href={attraction.mapsUrl} target="_blank" rel="noopener noreferrer">
+      {lang === 'zh' ? '查看金边夜市专属地图' : lang === 'km' ? 'មើលទីតាំងផ្សាររាត្រីក្នុងផែនទី' : 'Open the exact night market map'} ↗
+    </a>
+    <span class="ml-2">{attraction.address}</span>
+  </p>
 </section>
 
 <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)}></script>

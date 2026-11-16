@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TopicPage from '../components/TopicPage.astro';
+import { extraGuides, extraGuideSlugs } from '../i18n/extraGuides';
+
+export function getStaticPaths() {
+  return extraGuideSlugs.map((topic) => ({ params: { topic } }));
+}
+
+const { topic } = Astro.params as { topic: string };
+const tp = extraGuides.km[topic];
+---
+
+<BaseLayout title={tp.meta.title} description={tp.meta.description}>
+  <TopicPage topic={topic} />
+</BaseLayout>

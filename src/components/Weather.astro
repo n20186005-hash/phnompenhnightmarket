@@ -217,7 +217,7 @@ const weatherConfig = {
     }
   }
 
-  function makeEl(tag: string, className?: string, text?: string) {
+  function makeEl(tag: string, className?: string | null, text?: string) {
     const node = document.createElement(tag);
     if (className) node.className = className;
     if (text != null) node.textContent = text;
@@ -240,10 +240,10 @@ const weatherConfig = {
       const list = cfg.weekdays && cfg.weekdays[form];
       return list && list[dayIndex] ? list[dayIndex] : '';
     };
-    const riskEl = document.getElementById('weather-risk');
-    const tonightEl = document.getElementById('weather-tonight');
-    const adviceEl = document.getElementById('weather-advice');
-    const daysEl = document.getElementById('weather-days');
+    const riskEl = document.getElementById('weather-risk') as HTMLElement;
+    const tonightEl = document.getElementById('weather-tonight') as HTMLElement;
+    const adviceEl = document.getElementById('weather-advice') as HTMLElement;
+    const daysEl = document.getElementById('weather-days') as HTMLElement;
     const statusEl = document.getElementById('weather-status');
     if (!riskEl || !tonightEl || !adviceEl || !daysEl) return;
 

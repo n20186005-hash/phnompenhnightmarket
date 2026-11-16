@@ -1,0 +1,9 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import NearbyPlacePage from '../../components/NearbyPlacePage.astro';
+import { nearbyPlaces, nearbySlugs } from '../../i18n/nearbyPlaces';
+export function getStaticPaths() { return nearbySlugs.map((place) => ({params:{place}})); }
+const {place} = Astro.params as {place:string};
+const p = nearbyPlaces[place];
+---
+<BaseLayout title={`${p.name} – History, Visiting Tips & Map | Phnom Penh`} description={`${p.name}: history, architecture, location, suggested route, admission and visitor tips near Phnom Penh Night Market.`}><NearbyPlacePage slug={place}/></BaseLayout>

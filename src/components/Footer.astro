@@ -25,6 +25,7 @@ const langHrefs: Record<string, string> = {
   en: '/en/',
   zh: '/zh/',
 };
+const isHome = Astro.url.pathname === langHrefs[lang] || Astro.url.pathname === langHrefs[lang].slice(0, -1);
 ---
 
 <footer class="mt-8 bg-teal-950 text-teal-50">
@@ -53,12 +54,15 @@ const langHrefs: Record<string, string> = {
         {
           navItems.map((item) => (
             <li>
-              <a href={item.href} class="text-teal-100/80 transition hover:text-white">
+              <a href={isHome ? item.href : `${langHrefs[lang]}${item.href}`} class="text-teal-100/80 transition hover:text-white">
                 {messages.header.nav[item.key]}
               </a>
             </li>
           ))
         }
+        <li><a href={`${langHrefs[lang]}riverside/`} class="text-teal-100/80 transition hover:text-white">{lang === 'zh' ? '河滨位置与周边' : lang === 'km' ? 'មាត់ទន្លេ និងក្បែរៗ' : 'Riverside & nearby'}</a></li>
+        <li><a href={`${langHrefs[lang]}shopping/`} class="text-teal-100/80 transition hover:text-white">{lang === 'zh' ? '购物指南' : lang === 'km' ? 'ទិញទំនិញ' : 'Shopping guide'}</a></li>
+        <li><a href={`${langHrefs[lang]}evening-itinerary/`} class="text-teal-100/80 transition hover:text-white">{lang === 'zh' ? '两小时夜游路线' : lang === 'km' ? 'ផែនការពេលល្ងាច' : 'Evening itinerary'}</a></li>
       </ul>
     </div>
 

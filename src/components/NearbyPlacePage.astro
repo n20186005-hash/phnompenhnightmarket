@@ -1,0 +1,66 @@
+---
+import { getI18n } from '../i18n/ui';
+import { siteConfig } from '../config/site';
+import { nearbyPlaces, nearbyTranslations, nearbySlugs, nearbyCopy } from '../i18n/nearbyPlaces';
+interface Props { slug: string }
+const { slug } = Astro.props;
+const { lang } = getI18n(Astro.url);
+const core = nearbyPlaces[slug];
+const p = { ...core, ...(nearbyTranslations[lang]?.[slug] ?? {}) };
+const t = nearbyCopy[lang];
+const prefix = lang === 'km' ? '/' : `/${lang}/`;
+const other = nearbySlugs.filter((s) => s !== slug);
+const pictures = [1,2].map((n) => `/nearby/${slug}-${n}.jpg`);
+const canonical = `${siteConfig.baseUrl}${prefix}nearby/${slug}/`;
+const placeLd = {
+  '@context': 'https://schema.org', '@type': 'TouristAttraction',
+  '@id': `${canonical}#place`, name: p.name, url: canonical,
+  description: p.history, image: pictures.map((src) => `${siteConfig.baseUrl}${src}`),
+  address: { '@type': 'PostalAddress', streetAddress: p.address, addressLocality: 'Phnom Penh', addressCountry: 'KH' },
+  hasMap: p.map, isAccessibleForFree: slug === 'central-market',
+};
+const photoNames: Record<string, Record<string,string[]>> = {
+  en: { 'wat-phnom':['Wat Phnom stairway and temple entrance','Wat Phnom architectural detail'], 'royal-palace':['Royal Palace ceremonial pavilion in Phnom Penh','Royal Palace Khmer roofline'], 'central-market':['Vendors inside Central Market Phnom Penh','Central Market Art Deco dome exterior'] },
+  zh: { 'wat-phnom':['金边塔山寺阶梯及寺庙入口','塔山寺建筑装饰细节'], 'royal-palace':['金边王宫典礼建筑','王宫高棉式屋顶'], 'central-market':['金边中央市场内部商贩','中央市场装饰艺术风格圆顶外观'] },
+  km: { 'wat-phnom':['ជណ្តើរ និងច្រកចូលវត្តភ្នំ','លម្អស្ថាបត្យកម្មវត្តភ្នំ'], 'royal-palace':['អគារពិធីព្រះបរមរាជវាំង','ដំបូលខ្មែរនៅព្រះបរមរាជវាំង'], 'central-market':['អ្នកលក់ក្នុងផ្សារធំថ្មី','ដំបូល Art Deco ខាងក្រៅផ្សារធំថ្មី'] },
+};
+const sections = [
+  [t.history, p.history], [t.architecture, p.architecture], [t.experience, p.experience],
+  [t.tips, p.tips], [t.photography, p.photos], [t.accommodation, p.stay], [t.reviews, t.reviewsText],
+];
+---
+<article class="mx-auto max-w-4xl px-4 py-12">
+  <nav class="mb-6 text-sm text-teal-700"><a href={prefix}>{lang === 'zh' ? '首页' : lang === 'km' ? 'ទំព័រដើម' : 'Home'}</a> / <a href={`${prefix}riverside/`}>{t.back}</a> / {p.name}</nav>
+  <p class="font-semibold text-teal-700">Phnom Penh · Cambodia</p>
+  <h1 class="mt-2 text-4xl font-extrabold text-gray-900">{p.name}</h1>
+  <p class="mt-4 text-lg leading-8 text-gray-600">{t.subtitle}</p>
+  <div class="mt-5 flex flex-wrap gap-2 text-sm"><span class="rounded-full bg-teal-50 px-3 py-2">{p.type}</span><span class="rounded-full bg-amber-50 px-3 py-2">{p.hours}</span></div>
+  <a href={p.map} target="_blank" rel="noopener noreferrer" class="mt-6 inline-flex rounded-full bg-teal-700 px-5 py-3 font-semibold text-white hover:bg-teal-800">🗺️ {t.maps} ↗</a>
+  <p class="mt-3 text-sm text-gray-500">{p.address}</p>
+  <figure class="mt-7 overflow-hidden rounded-3xl bg-gray-100">
+    <img src={pictures[0]} alt={photoNames[lang][slug][0]} class="aspect-[16/9] w-full object-cover" loading="eager" width="1600" height="900" />
+    <figcaption class="p-3 text-sm text-gray-600">{photoNames[lang][slug][0]}</figcaption>
+  </figure>
+
+  <section class="mt-9 rounded-3xl border border-amber-200 bg-amber-50 p-6">
+    <h2 class="text-2xl font-bold text-gray-900">{t.management}</h2>
+    <p class="mt-4 leading-8 text-gray-700">{p.manager}</p>
+  </section>
+  <section class="mt-10 rounded-3xl bg-gray-50 p-6">
+    <h2 class="text-2xl font-bold text-gray-900">{t.essentials}</h2>
+    <dl class="mt-5 grid gap-5 sm:grid-cols-2">
+      {[[t.hours,p.hours],[t.admission,p.price],[t.access,p.address],[lang === 'zh' ? '建议停留' : lang === 'km' ? 'ពេលណែនាំ' : 'Visit length',p.duration]].map(([label,value]) => <div><dt class="font-bold text-gray-900">{label}</dt><dd class="mt-1 leading-7 text-gray-600">{value}</dd></div>)}
+    </dl>
+  </section>
+  <div class="mt-10 space-y-9">
+    {sections.slice(0,3).map(([heading,body]) => <section><h2 class="text-2xl font-bold text-gray-900">{heading}</h2><p class="mt-3 leading-8 text-gray-600">{body}</p></section>)}
+    <figure class="overflow-hidden rounded-3xl bg-gray-100"><img src={pictures[1]} alt={photoNames[lang][slug][1]} class="aspect-[16/9] w-full object-cover" loading="lazy" width="1600" height="900" /><figcaption class="p-3 text-sm text-gray-600">{photoNames[lang][slug][1]}</figcaption></figure>
+    <section><h2 class="text-2xl font-bold text-gray-900">{t.itinerary}</h2><ol class="mt-4 space-y-3">{p.route.map((step: string, i: number) => <li class="flex items-center gap-4 rounded-2xl bg-teal-50 p-4"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-teal-700 font-bold text-white">{i+1}</span><span class="text-gray-700">{step}</span></li>)}</ol></section>
+    {sections.slice(3).map(([heading,body]) => <section><h2 class="text-2xl font-bold text-gray-900">{heading}</h2><p class="mt-3 leading-8 text-gray-600">{body}</p></section>)}
+    <section><h2 class="text-2xl font-bold text-gray-900">{t.access}</h2><p class="mt-3 leading-8 text-gray-600">{t.accessText}</p><a href={p.map} class="mt-4 inline-block font-semibold text-teal-700 underline" target="_blank" rel="noopener noreferrer">{t.maps} ↗</a><p class="mt-2 text-gray-600">{p.address}</p></section>
+    <section class="rounded-2xl bg-gray-50 p-5"><h2 class="text-2xl font-bold text-gray-900">{t.faq}</h2><div class="mt-3 space-y-3">{t.faqItems.map((q: string, i: number) => <details class="rounded-xl bg-white p-4"><summary class="cursor-pointer font-semibold">{q}</summary><p class="mt-2 text-gray-600">{t.answers[i]}</p></details>)}</div></section>
+  </div>
+  <a class="mt-4 block text-sm text-teal-700 underline" href={p.source} target="_blank" rel="noopener noreferrer">{t.source} ↗</a>
+  <div class="mt-10"><h2 class="text-2xl font-bold text-gray-900">{t.back}</h2><div class="mt-4 grid gap-3 sm:grid-cols-2">{other.map((slug: string) => <a class="rounded-2xl border border-teal-100 p-4 font-semibold text-teal-700 hover:bg-teal-50" href={`${prefix}nearby/${slug}/`}>{nearbyTranslations[lang]?.[slug]?.name ?? nearbyPlaces[slug].name} →</a>)}<a class="rounded-2xl border border-teal-100 p-4 font-semibold text-teal-700 hover:bg-teal-50" href={`${prefix}riverside/`}>{lang === 'zh' ? '河滨夜市攻略' : lang === 'km' ? 'មគ្គុទ្ទេសក៍មាត់ទន្លេ' : 'Night market riverside guide'} →</a></div></div>
+</article>
+<script type="application/ld+json" is:inline set:html={JSON.stringify(placeLd)}></script>
